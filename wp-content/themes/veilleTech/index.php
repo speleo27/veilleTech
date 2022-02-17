@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>veille techn</title>
-</head>
-<body>
-	<h1>Coucou les gens !</h1>
-	<h2>ceci est mon premier theme wordpress</h2>
-</body>
-</html>
+<?php get_header(); ?>
+
+	<h1>Coucou</h1>
+	<h2>Ceci est mon premier thème personnalisé en wordpress</h2>
+
+<?php get_footer(); ?>
