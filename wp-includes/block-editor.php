@@ -307,10 +307,11 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 		$custom_settings
 	);
 
-	$presets = array(
+	$global_styles = array();
+	$presets       = array(
 		array(
-			'css'                     => 'variables',
-			'__unstableType'          => 'presets',
+			'css'            => 'variables',
+			'__unstableType' => 'presets',
 		),
 		array(
 			'css'            => 'presets',
@@ -320,8 +321,8 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 	foreach ( $presets as $preset_style ) {
 		$actual_css = wp_get_global_stylesheet( array( $preset_style['css'] ) );
 		if ( '' !== $actual_css ) {
-			$preset_style['css']         = $actual_css;
-			$editor_settings['styles'][] = $preset_style;
+			$preset_style['css'] = $actual_css;
+			$global_styles[]     = $preset_style;
 		}
 	}
 
@@ -332,10 +333,12 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 		);
 		$actual_css    = wp_get_global_stylesheet( array( $block_classes['css'] ) );
 		if ( '' !== $actual_css ) {
-			$block_classes['css']        = $actual_css;
-			$editor_settings['styles'][] = $block_classes;
+			$block_classes['css'] = $actual_css;
+			$global_styles[]      = $block_classes;
 		}
 	}
+
+	$editor_settings['styles'] = array_merge( $global_styles, get_block_editor_theme_styles() );
 
 	$editor_settings['__experimentalFeatures'] = wp_get_global_settings();
 	// These settings may need to be updated based on data coming from theme.json sources.
@@ -343,9 +346,9 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 		$colors_by_origin          = $editor_settings['__experimentalFeatures']['color']['palette'];
 		$editor_settings['colors'] = isset( $colors_by_origin['custom'] ) ?
 			$colors_by_origin['custom'] : (
-				isset( $colors_by_origin['theme'] ) ?
-					$colors_by_origin['theme'] :
-					$colors_by_origin['default']
+			isset( $colors_by_origin['theme'] ) ?
+				$colors_by_origin['theme'] :
+				$colors_by_origin['default']
 			);
 	}
 	if ( isset( $editor_settings['__experimentalFeatures']['color']['gradients'] ) ) {
@@ -423,25 +426,28 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
  * Preloads common data used with the block editor by specifying an array of
  * REST API paths that will be preloaded for a given block editor context.
  *
- * @since 5.8.0
- *
- * @global WP_Post $post Global post object.
- *
- * @param string[]                $preload_paths        List of paths to preload.
+ * @param string[] $preload_paths List of paths to preload.
  * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
  *
  * @return void
+ * @global WP_Styles $wp_styles The WP_Styles object for printing styles.
+ *
+ * @since 5.8.0
+ *
+ * @global WP_Post $post Global post object.
+ * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  */
 function block_editor_rest_api_preload( array $preload_paths, $block_editor_context ) {
-	global $post;
+	global $post, $wp_scripts, $wp_styles;
 
 	/**
 	 * Filters the array of REST API paths that will be used to preloaded common data for the block editor.
 	 *
+	 * @param string[] $preload_paths Array of paths to preload.
+	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
+	 *
 	 * @since 5.8.0
 	 *
-	 * @param string[]                $preload_paths        Array of paths to preload.
-	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
 	 */
 	$preload_paths = apply_filters( 'block_editor_rest_api_preload_paths', $preload_paths, $block_editor_context );
 
@@ -467,11 +473,15 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 	}
 
 	/*
-	 * Ensure the global $post remains the same after API data is preloaded.
+	 * Ensure the global $post, $wp_scripts, and $wp_styles remain the same after
+	 * API data is preloaded.
 	 * Because API preloading can call the_content and other filters, plugins
-	 * can unexpectedly modify $post.
+	 * can unexpectedly modify the global $post or enqueue assets which are not
+	 * intended for the block editor.
 	 */
 	$backup_global_post = ! empty( $post ) ? clone $post : $post;
+	$backup_wp_scripts  = ! empty( $wp_scripts ) ? clone $wp_scripts : $wp_scripts;
+	$backup_wp_styles   = ! empty( $wp_styles ) ? clone $wp_styles : $wp_styles;
 
 	foreach ( $preload_paths as &$path ) {
 		if ( is_string( $path ) && ! str_starts_with( $path, '/' ) ) {
@@ -480,7 +490,7 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 		}
 
 		if ( is_array( $path ) && is_string( $path[0] ) && ! str_starts_with( $path[0], '/' ) ) {
-				$path[0] = '/' . $path[0];
+			$path[0] = '/' . $path[0];
 		}
 	}
 
@@ -492,8 +502,10 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 		array()
 	);
 
-	// Restore the global $post as it was before API preloading.
-	$post = $backup_global_post;
+	// Restore the global $post, $wp_scripts, and $wp_styles as they were before API preloading.
+	$post       = $backup_global_post;
+	$wp_scripts = $backup_wp_scripts;
+	$wp_styles  = $backup_wp_styles;
 
 	wp_add_inline_script(
 		'wp-api-fetch',

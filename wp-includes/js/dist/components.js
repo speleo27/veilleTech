@@ -39572,30 +39572,37 @@ function ColorPalette(_ref6) {
     __experimentalHasMultipleOrigins = false,
     __experimentalIsRenderedInSidebar = false
   } = _ref6;
-  const clearColor = Object(external_wp_element_["useCallback"])(() => onChange(undefined), [onChange]);
-  const Component = __experimentalHasMultipleOrigins && colors !== null && colors !== void 0 && colors.length ? MultiplePalettes : SinglePalette;
+	const clearColor = Object(external_wp_element_["useCallback"])(() => onChange(undefined), [onChange]);
+	const Component = __experimentalHasMultipleOrigins && colors !== null && colors !== void 0 && colors.length ? MultiplePalettes : SinglePalette;
 
-  const renderCustomColorPicker = () => Object(external_wp_element_["createElement"])(LegacyAdapter, {
-    color: value,
-    onChange: color => onChange(color),
-    enableAlpha: enableAlpha
-  });
+	const renderCustomColorPicker = () => Object(external_wp_element_["createElement"])(LegacyAdapter, {
+		color: value,
+		onChange: color => onChange(color),
+		enableAlpha: enableAlpha
+	});
 
-  const colordColor = Object(colord["a" /* colord */])(value);
-  return Object(external_wp_element_["createElement"])(v_stack_component, {
-    spacing: 3,
-    className: className
-  }, !disableCustomColors && Object(external_wp_element_["createElement"])(CustomColorPickerDropdown, {
-    isRenderedInSidebar: __experimentalIsRenderedInSidebar,
-    renderContent: renderCustomColorPicker,
-    renderToggle: _ref7 => {
-      let {
-        isOpen,
-        onToggle
-      } = _ref7;
-      return Object(external_wp_element_["createElement"])("button", {
-        className: "components-color-palette__custom-color",
-        "aria-expanded": isOpen,
+	let dropdownPosition;
+
+	if (__experimentalIsRenderedInSidebar) {
+		dropdownPosition = 'bottom left';
+	}
+
+	const colordColor = Object(colord["a" /* colord */])(value);
+	return Object(external_wp_element_["createElement"])(v_stack_component, {
+		spacing: 3,
+		className: className
+	}, !disableCustomColors && Object(external_wp_element_["createElement"])(CustomColorPickerDropdown, {
+		position: dropdownPosition,
+		isRenderedInSidebar: __experimentalIsRenderedInSidebar,
+		renderContent: renderCustomColorPicker,
+		renderToggle: _ref7 => {
+			let {
+				isOpen,
+				onToggle
+			} = _ref7;
+			return Object(external_wp_element_["createElement"])("button", {
+				className: "components-color-palette__custom-color",
+				"aria-expanded": isOpen,
         "aria-haspopup": "true",
         onClick: onToggle,
         "aria-label": Object(external_wp_i18n_["__"])('Custom color picker'),
@@ -39875,9 +39882,8 @@ function GradientColorPickerDropdown(_ref2) {
     };
 
     if (isRenderedInSidebar) {
-      result.anchorRef = gradientPickerDomRef.current;
-      result.position = Object(external_wp_i18n_["isRTL"])() ? 'bottom right' : 'bottom left';
-      result.__unstableForcePosition = true;
+	    result.anchorRef = gradientPickerDomRef.current;
+	    result.position = 'bottom left';
     }
 
     return result;
@@ -50985,32 +50991,43 @@ function ToggleGroupControlBackdrop(_ref) {
      */
 
     const targetNode = containerNode.querySelector(`[data-value="${state}"]`);
-    setRenderBackdrop(!!targetNode);
+	  setRenderBackdrop(!!targetNode);
 
-    if (!targetNode) {
-      return;
-    }
+	  if (!targetNode) {
+		  return;
+	  }
 
-    const {
-      x: parentX
-    } = containerNode.getBoundingClientRect();
-    const {
-      width: offsetWidth,
-      x
-    } = targetNode.getBoundingClientRect();
-    const borderWidth = 1;
-    const offsetLeft = x - parentX - borderWidth;
-    setLeft(offsetLeft);
-    setWidth(offsetWidth);
-    let requestId;
+	  const computeDimensions = () => {
+		  const {
+			  width: offsetWidth,
+			  x
+		  } = targetNode.getBoundingClientRect();
+		  const {
+			  x: parentX
+		  } = containerNode.getBoundingClientRect();
+		  const borderWidth = 1;
+		  const offsetLeft = x - parentX - borderWidth;
+		  setLeft(offsetLeft);
+		  setWidth(offsetWidth);
+	  }; // Fix to make the component appear as expected inside popovers.
+	  // If the targetNode width is 0 it means the element was not yet rendered we should allow
+	  // some time for the render to happen.
+	  // requestAnimationFrame instead of setTimeout with a small time does not seems to work.
 
-    if (!canAnimate) {
-      requestId = window.requestAnimationFrame(() => {
-        setCanAnimate(true);
-      });
-    }
 
-    return () => window.cancelAnimationFrame(requestId);
+	  const dimensionsRequestId = window.setTimeout(computeDimensions, 100);
+	  let animationRequestId;
+
+	  if (!canAnimate) {
+		  animationRequestId = window.requestAnimationFrame(() => {
+			  setCanAnimate(true);
+		  });
+	  }
+
+	  return () => {
+		  window.clearTimeout(dimensionsRequestId);
+		  window.cancelAnimationFrame(animationRequestId);
+	  };
   }, [canAnimate, containerRef, containerWidth, state, isAdaptiveWidth]);
 
   if (!renderBackdrop) {
@@ -59435,37 +59452,39 @@ function TreeGrid(_ref, ref) {
 
           // Left:
           // If a row is focused, and it is expanded, collapses the current row.
-          if ((activeRow === null || activeRow === void 0 ? void 0 : activeRow.ariaExpanded) === 'true') {
-            onCollapseRow(activeRow);
-            event.preventDefault();
-            return;
-          } // If a row is focused, and it is collapsed, moves to the parent row (if there is one).
+	        if (activeRow.getAttribute('aria-expanded') === 'true') {
+		        onCollapseRow(activeRow);
+		        event.preventDefault();
+		        return;
+	        } // If a row is focused, and it is collapsed, moves to the parent row (if there is one).
 
 
           const level = Math.max(parseInt((_activeRow$ariaLevel = activeRow === null || activeRow === void 0 ? void 0 : activeRow.ariaLevel) !== null && _activeRow$ariaLevel !== void 0 ? _activeRow$ariaLevel : 1, 10) - 1, 1);
           const rows = Array.from(treeGridElement.querySelectorAll('[role="row"]'));
           let parentRow = activeRow;
-          const currentRowIndex = rows.indexOf(activeRow);
+	        const currentRowIndex = rows.indexOf(activeRow);
 
-          for (let i = currentRowIndex; i >= 0; i--) {
-            if (parseInt(rows[i].ariaLevel, 10) === level) {
-              parentRow = rows[i];
-              break;
-            }
-          }
+	        for (let i = currentRowIndex; i >= 0; i--) {
+		        if (parseInt(rows[i].ariaLevel, 10) === level) {
+			        parentRow = rows[i];
+			        break;
+		        }
+	        }
 
-          (_getRowFocusables = getRowFocusables(parentRow)) === null || _getRowFocusables === void 0 ? void 0 : (_getRowFocusables$ = _getRowFocusables[0]) === null || _getRowFocusables$ === void 0 ? void 0 : _getRowFocusables$.focus();
-        } else {
-          // Right:
-          // If a row is focused, and it is collapsed, expands the current row.
-          if ((activeRow === null || activeRow === void 0 ? void 0 : activeRow.ariaExpanded) === 'false') {
-            onExpandRow(activeRow);
-            event.preventDefault();
-            return;
-          } // If a row is focused, and it is expanded, focuses the rightmost cell in the row.
+	        (_getRowFocusables = getRowFocusables(parentRow)) === null || _getRowFocusables === void 0 ? void 0 : (_getRowFocusables$ = _getRowFocusables[0]) === null || _getRowFocusables$ === void 0 ? void 0 : _getRowFocusables$.focus();
+        }
+
+	      if (keyCode === external_wp_keycodes_["RIGHT"]) {
+		      // Right:
+		      // If a row is focused, and it is collapsed, expands the current row.
+		      if (activeRow.getAttribute('aria-expanded') === 'false') {
+			      onExpandRow(activeRow);
+			      event.preventDefault();
+			      return;
+		      } // If a row is focused, and it is expanded, focuses the rightmost cell in the row.
 
 
-          const focusableItems = getRowFocusables(activeRow);
+		      const focusableItems = getRowFocusables(activeRow);
 
           if (focusableItems.length > 0) {
             var _focusableItems;
@@ -59515,17 +59534,17 @@ function TreeGrid(_ref, ref) {
         // will still focus text when using arrow keys, while this
         // component should limit navigation to focusables.
         event.preventDefault();
-        return;
+	      return;
       } // Try to focus the element in the next row that's at a similar column to the activeElement.
 
 
-      const nextIndex = Math.min(currentColumnIndex, focusablesInNextRow.length - 1);
-      focusablesInNextRow[nextIndex].focus(); // Prevent key use for anything else. This ensures Voiceover
-      // doesn't try to handle key navigation.
+	    const nextIndex = Math.min(currentColumnIndex, focusablesInNextRow.length - 1);
+	    focusablesInNextRow[nextIndex].focus(); // Prevent key use for anything else. This ensures Voiceover
+	    // doesn't try to handle key navigation.
 
-      event.preventDefault();
+	    event.preventDefault();
     }
-  }, []);
+  }, [onExpandRow, onCollapseRow]);
   /* Disable reason: A treegrid is implemented using a table element. */
 
   /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */

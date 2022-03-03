@@ -25,19 +25,31 @@ window.wpAjax = jQuery.extend( {
 			parsed.errors = false;
 			jQuery('response', x).each( function() {
 				var th = jQuery(this), child = jQuery(this.firstChild), response;
-				response = { action: th.attr('action'), what: child.get(0).nodeName, id: child.attr('id'), oldId: child.attr('old_id'), position: child.attr('position') };
-				response.data = jQuery( 'response_data', child ).text();
-				successmsg += response.data;
+				response = {
+					action: th.attr('action'),
+					what: child.get(0).nodeName,
+					id: child.attr('id'),
+					oldId: child.attr('old_id'),
+					position: child.attr('position')
+				};
+				response.data = jQuery('response_data', child).text();
+				if (jQuery('body').hasClass('edit-tags-php')) {
+					successmsg += response.data;
+				}
 				response.supplemental = {};
-				if ( !jQuery( 'supplemental', child ).children().each( function() {
+				if (!jQuery('supplemental', child).children().each(function () {
 					response.supplemental[this.nodeName] = jQuery(this).text();
-				} ).length ) { response.supplemental = false; }
+				}).length) {
+					response.supplemental = false;
+				}
 				response.errors = [];
-				if ( !jQuery('wp_error', child).each( function() {
+				if (!jQuery('wp_error', child).each(function () {
 					var code = jQuery(this).attr('code'), anError, errorData, formField;
-					anError = { code: code, message: this.firstChild.nodeValue, data: false };
+					anError = {code: code, message: this.firstChild.nodeValue, data: false};
 					errorData = jQuery('wp_error_data[code="' + code + '"]', x);
-					if ( errorData ) { anError.data = errorData.get(); }
+					if (errorData) {
+						anError.data = errorData.get();
+					}
 					formField = jQuery( 'form-field', errorData ).text();
 					if ( formField ) { code = formField; }
 					if ( e ) { wpAjax.invalidateForm( jQuery('#' + e + ' :input[name="' + code + '"]' ).parents('.form-field:first') ); }
@@ -47,13 +59,13 @@ window.wpAjax = jQuery.extend( {
 				} ).length ) { response.errors = false; }
 				parsed.responses.push( response );
 			} );
-			if ( err.length ) {
-				re.html( '<div class="error">' + err + '</div>' );
-				wp.a11y.speak( err );
-			} else {
-				re.html( '<div class="updated notice is-dismissible"><p>' + successmsg + '</p></div>');
-				jQuery(document).trigger( 'wp-updates-notice-added' );
-				wp.a11y.speak( successmsg );
+			if (err.length) {
+				re.html('<div class="error">' + err + '</div>');
+				wp.a11y.speak(err);
+			} else if (successmsg.length) {
+				re.html('<div class="updated notice is-dismissible"><p>' + successmsg + '</p></div>');
+				jQuery(document).trigger('wp-updates-notice-added');
+				wp.a11y.speak(successmsg);
 			}
 			return parsed;
 		}

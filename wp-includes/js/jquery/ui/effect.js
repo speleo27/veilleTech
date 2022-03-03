@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Effects 1.13.0
+ * jQuery UI Effects 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -31,8 +31,8 @@
 "use strict";
 
 // Include version.js
-$.ui = $.ui || {};
-$.ui.version = "1.13.0";
+	$.ui = $.ui || {};
+	$.ui.version = "1.13.1";
 
 // Source: jquery-var-for-color.js
 // Create a local jQuery because jQuery Color relies on it and the
@@ -812,7 +812,7 @@ function getElementStyles( elem ) {
 			}
 		}
 
-	// Support: Opera, IE <9
+		// Support: Opera, IE <9
 	} else {
 		for ( key in style ) {
 			if ( typeof style[ key ] === "string" ) {
@@ -1119,16 +1119,16 @@ if ( $.uiBackCompat !== false ) {
 }
 
 $.extend( $.effects, {
-	version: "1.13.0",
+	version: "1.13.1",
 
-	define: function( name, mode, effect ) {
-		if ( !effect ) {
+	define: function (name, mode, effect) {
+		if (!effect) {
 			effect = mode;
 			mode = "effect";
 		}
 
-		$.effects.effect[ name ] = effect;
-		$.effects.effect[ name ].mode = mode;
+		$.effects.effect[name] = effect;
+		$.effects.effect[name].mode = mode;
 
 		return effect;
 	},
@@ -1200,32 +1200,32 @@ $.extend( $.effects, {
 	getBaseline: function( origin, original ) {
 		var y, x;
 
-		switch ( origin[ 0 ] ) {
-		case "top":
-			y = 0;
-			break;
-		case "middle":
-			y = 0.5;
-			break;
-		case "bottom":
-			y = 1;
-			break;
-		default:
-			y = origin[ 0 ] / original.height;
+		switch (origin[0]) {
+			case "top":
+				y = 0;
+				break;
+			case "middle":
+				y = 0.5;
+				break;
+			case "bottom":
+				y = 1;
+				break;
+			default:
+				y = origin[0] / original.height;
 		}
 
-		switch ( origin[ 1 ] ) {
-		case "left":
-			x = 0;
-			break;
-		case "center":
-			x = 0.5;
-			break;
-		case "right":
-			x = 1;
-			break;
-		default:
-			x = origin[ 1 ] / original.width;
+		switch (origin[1]) {
+			case "left":
+				x = 0;
+				break;
+			case "center":
+				x = 0.5;
+				break;
+			case "right":
+				x = 1;
+				break;
+			default:
+				x = origin[1] / original.width;
 		}
 
 		return {
@@ -1244,14 +1244,14 @@ $.extend( $.effects, {
 		// will change margin if you explicitly set height
 		// see: http://jsfiddle.net/JZSMt/3/ https://bugs.webkit.org/show_bug.cgi?id=107380
 		// Support: Safari
-		element.css( {
-			marginTop: element.css( "marginTop" ),
-			marginBottom: element.css( "marginBottom" ),
-			marginLeft: element.css( "marginLeft" ),
-			marginRight: element.css( "marginRight" )
-		} )
-		.outerWidth( element.outerWidth() )
-		.outerHeight( element.outerHeight() );
+		element.css({
+			marginTop: element.css("marginTop"),
+			marginBottom: element.css("marginBottom"),
+			marginLeft: element.css("marginLeft"),
+			marginRight: element.css("marginRight")
+		})
+			.outerWidth(element.outerWidth())
+			.outerHeight(element.outerHeight());
 
 		if ( /^(static|relative)/.test( cssPosition ) ) {
 			cssPosition = "absolute";
@@ -1266,15 +1266,15 @@ $.extend( $.effects, {
 				visibility: "hidden",
 
 				// Margins need to be set to account for margin collapse
-				marginTop: element.css( "marginTop" ),
-				marginBottom: element.css( "marginBottom" ),
-				marginLeft: element.css( "marginLeft" ),
-				marginRight: element.css( "marginRight" ),
-				"float": element.css( "float" )
-			} )
-			.outerWidth( element.outerWidth() )
-			.outerHeight( element.outerHeight() )
-			.addClass( "ui-effects-placeholder" );
+				marginTop: element.css("marginTop"),
+				marginBottom: element.css("marginBottom"),
+				marginLeft: element.css("marginLeft"),
+				marginRight: element.css("marginRight"),
+				"float": element.css("float")
+			})
+				.outerWidth(element.outerWidth())
+				.outerHeight(element.outerHeight())
+				.addClass("ui-effects-placeholder");
 
 			element.data( dataSpace + "placeholder", placeholder );
 		}
@@ -1290,7 +1290,7 @@ $.extend( $.effects, {
 
 	removePlaceholder: function( element ) {
 		var dataKey = dataSpace + "placeholder",
-				placeholder = element.data( dataKey );
+			placeholder = element.data(dataKey);
 
 		if ( placeholder ) {
 			placeholder.remove();
@@ -1362,8 +1362,8 @@ function _normalizeArguments( effect, options, speed, callback ) {
 	speed = speed || options.duration;
 	effect.duration = $.fx.off ? 0 :
 		typeof speed === "number" ? speed :
-		speed in $.fx.speeds ? $.fx.speeds[ speed ] :
-		$.fx.speeds._default;
+			speed in $.fx.speeds ? $.fx.speeds[speed] :
+				$.fx.speeds._default;
 
 	effect.complete = callback || options.complete;
 
@@ -1419,8 +1419,8 @@ $.fn.extend( {
 				modes.push( normalizedMode );
 
 				// See $.uiBackCompat inside of run() for removal of defaultMode in 1.14
-				if ( defaultMode && ( normalizedMode === "show" ||
-						( normalizedMode === defaultMode && normalizedMode === "hide" ) ) ) {
+				if (defaultMode && (normalizedMode === "show" ||
+					(normalizedMode === defaultMode && normalizedMode === "hide"))) {
 					el.show();
 				}
 
@@ -1598,17 +1598,17 @@ $.fn.extend( {
 } );
 
 function parseClip( str, element ) {
-		var outerWidth = element.outerWidth(),
-			outerHeight = element.outerHeight(),
-			clipRegex = /^rect\((-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto)\)$/,
-			values = clipRegex.exec( str ) || [ "", 0, outerWidth, outerHeight, 0 ];
+	var outerWidth = element.outerWidth(),
+		outerHeight = element.outerHeight(),
+		clipRegex = /^rect\((-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto)\)$/,
+		values = clipRegex.exec(str) || ["", 0, outerWidth, outerHeight, 0];
 
-		return {
-			top: parseFloat( values[ 1 ] ) || 0,
-			right: values[ 2 ] === "auto" ? outerWidth : parseFloat( values[ 2 ] ),
-			bottom: values[ 3 ] === "auto" ? outerHeight : parseFloat( values[ 3 ] ),
-			left: parseFloat( values[ 4 ] ) || 0
-		};
+	return {
+		top: parseFloat(values[1]) || 0,
+		right: values[2] === "auto" ? outerWidth : parseFloat(values[2]),
+		bottom: values[3] === "auto" ? outerHeight : parseFloat(values[3]),
+		left: parseFloat(values[4]) || 0
+	};
 }
 
 $.fx.step.clip = function( fx ) {

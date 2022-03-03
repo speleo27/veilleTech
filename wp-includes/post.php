@@ -354,9 +354,10 @@ function create_initial_post_types() {
 			),
 			'description'           => __( 'Templates to include in your theme.' ),
 			'public'                => false,
-			'_builtin'              => true, /* internal use only. don't use this when registering your own post type. */
+			'_builtin'              => true,
+			/* internal use only. don't use this when registering your own post type. */
 			'has_archive'           => false,
-			'show_ui'               => wp_is_block_theme(),
+			'show_ui'               => false,
 			'show_in_menu'          => false,
 			'show_in_rest'          => true,
 			'rewrite'               => false,
@@ -414,9 +415,10 @@ function create_initial_post_types() {
 			),
 			'description'           => __( 'Template parts to include in your templates.' ),
 			'public'                => false,
-			'_builtin'              => true, /* internal use only. don't use this when registering your own post type. */
+			'_builtin'              => true,
+			/* internal use only. don't use this when registering your own post type. */
 			'has_archive'           => false,
-			'show_ui'               => wp_is_block_theme(),
+			'show_ui'               => false,
 			'show_in_menu'          => false,
 			'show_in_rest'          => true,
 			'rewrite'               => false,
@@ -501,9 +503,10 @@ function create_initial_post_types() {
 			),
 			'description'           => __( 'Navigation menus that can be inserted into your site.' ),
 			'public'                => false,
-			'_builtin'              => true, /* internal use only. don't use this when registering your own post type. */
+			'_builtin'              => true,
+			/* internal use only. don't use this when registering your own post type. */
 			'has_archive'           => false,
-			'show_ui'               => wp_is_block_theme(),
+			'show_ui'               => true,
 			'show_in_menu'          => false,
 			'show_in_admin_bar'     => false,
 			'show_in_rest'          => true,
@@ -520,6 +523,7 @@ function create_initial_post_types() {
 				'delete_others_posts'    => 'edit_theme_options',
 				'edit_private_posts'     => 'edit_theme_options',
 				'edit_published_posts'   => 'edit_theme_options',
+				'edit_posts'             => 'edit_theme_options',
 			),
 			'rest_base'             => 'navigation',
 			'rest_controller_class' => 'WP_REST_Posts_Controller',

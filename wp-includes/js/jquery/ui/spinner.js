@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Spinner 1.13.0
+ * jQuery UI Spinner 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -47,7 +47,7 @@ function spinnerModifier( fn ) {
 }
 
 $.widget( "ui.spinner", {
-	version: "1.13.0",
+	version: "1.13.1",
 	defaultElement: "<input>",
 	widgetEventPrefix: "spin",
 	options: {
@@ -230,14 +230,14 @@ $.widget( "ui.spinner", {
 	// Support mobile enhanced option and make backcompat more sane
 	_enhance: function() {
 		this.uiSpinner = this.element
-			.attr( "autocomplete", "off" )
-			.wrap( "<span>" )
+			.attr("autocomplete", "off")
+			.wrap("<span>")
 			.parent()
 
-				// Add buttons
-				.append(
-					"<a></a><a></a>"
-				);
+			// Add buttons
+			.append(
+				"<a></a><a></a>"
+			);
 	},
 
 	_draw: function() {
@@ -274,9 +274,9 @@ $.widget( "ui.spinner", {
 
 		// IE 6 doesn't understand height: 50% for the buttons
 		// unless the wrapper has an explicit height
-		if ( this.buttons.height() > Math.ceil( this.uiSpinner.height() * 0.5 ) &&
-				this.uiSpinner.height() > 0 ) {
-			this.uiSpinner.height( this.uiSpinner.height() );
+		if (this.buttons.height() > Math.ceil(this.uiSpinner.height() * 0.5) &&
+			this.uiSpinner.height() > 0) {
+			this.uiSpinner.height(this.uiSpinner.height());
 		}
 	},
 
@@ -284,19 +284,19 @@ $.widget( "ui.spinner", {
 		var options = this.options,
 			keyCode = $.ui.keyCode;
 
-		switch ( event.keyCode ) {
-		case keyCode.UP:
-			this._repeat( null, 1, event );
-			return true;
-		case keyCode.DOWN:
-			this._repeat( null, -1, event );
-			return true;
-		case keyCode.PAGE_UP:
-			this._repeat( null, options.page, event );
-			return true;
-		case keyCode.PAGE_DOWN:
-			this._repeat( null, -options.page, event );
-			return true;
+		switch (event.keyCode) {
+			case keyCode.UP:
+				this._repeat(null, 1, event);
+				return true;
+			case keyCode.DOWN:
+				this._repeat(null, -1, event);
+				return true;
+			case keyCode.PAGE_UP:
+				this._repeat(null, options.page, event);
+				return true;
+			case keyCode.PAGE_DOWN:
+				this._repeat(null, -options.page, event);
+				return true;
 		}
 
 		return false;
@@ -557,12 +557,12 @@ if ( $.uiBackCompat !== false ) {
 	$.widget( "ui.spinner", $.ui.spinner, {
 		_enhance: function() {
 			this.uiSpinner = this.element
-				.attr( "autocomplete", "off" )
-				.wrap( this._uiSpinnerHtml() )
+				.attr("autocomplete", "off")
+				.wrap(this._uiSpinnerHtml())
 				.parent()
 
-					// Add buttons
-					.append( this._buttonHtml() );
+				// Add buttons
+				.append(this._buttonHtml());
 		},
 		_uiSpinnerHtml: function() {
 			return "<span>";

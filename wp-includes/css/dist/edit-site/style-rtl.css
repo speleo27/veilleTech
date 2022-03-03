@@ -1762,25 +1762,89 @@ body.is-fullscreen-mode .edit-site .components-editor-notices__snackbar {
   font-size: 13px;
   line-height: 1.4;
   margin: 0 0 16px 0;
-  padding: 0 32px;
+    padding: 0 32px;
 }
+
 .edit-site-welcome-guide__text img {
-  vertical-align: bottom;
+    vertical-align: bottom;
 }
+
 .edit-site-welcome-guide__inserter-icon {
-  margin: 0 4px;
-  vertical-align: text-top;
+    margin: 0 4px;
+    vertical-align: text-top;
+}
+
+.edit-site-keyboard-shortcut-help-modal__section {
+    margin: 0 0 2rem 0;
+}
+
+.edit-site-keyboard-shortcut-help-modal__main-shortcuts .edit-site-keyboard-shortcut-help-modal__shortcut-list {
+    margin-top: -25px;
+}
+
+.edit-site-keyboard-shortcut-help-modal__section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut {
+    display: flex;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-top: 1px solid #ddd;
+    margin-bottom: 0;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut:empty {
+    display: none;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut-term {
+    font-weight: 600;
+    margin: 0 1rem 0 0;
+    text-align: left;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut-description {
+    flex: 1;
+    margin: 0;
+    flex-basis: auto;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut-key-combination {
+    display: block;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut-key-combination + .edit-site-keyboard-shortcut-help-modal__shortcut-key-combination {
+    margin-top: 10px;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut-key {
+    padding: 0.25rem 0.5rem;
+    border-radius: 8%;
+    margin: 0 0.2rem 0 0.2rem;
+}
+
+.edit-site-keyboard-shortcut-help-modal__shortcut-key:last-child {
+    margin: 0 0.2rem 0 0;
 }
 
 html.wp-toolbar {
-  background: #fff;
+    background: #fff;
 }
 
 body.appearance_page_gutenberg-edit-site,
 body.site-editor-php {
-  background: #fff;
-  /* We hide legacy notices in Gutenberg Based Pages, because they were not designed in a way that scaled well.
-     Plugins can use Gutenberg notices if they need to pass on information to the user when they are editing. */
+    background: #fff;
+    /* We hide legacy notices in Gutenberg Based Pages, because they were not designed in a way that scaled well.
+       Plugins can use Gutenberg notices if they need to pass on information to the user when they are editing. */
 }
 body.appearance_page_gutenberg-edit-site #wpcontent,
 body.site-editor-php #wpcontent {

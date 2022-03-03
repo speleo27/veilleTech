@@ -1,4 +1,4 @@
-/*! jQuery UI - v1.13.0 - 2021-10-07
+/*! jQuery UI - v1.13.1 - 2022-01-20
 * http://jqueryui.com
 * Includes: data.js, disable-selection.js, escape-selector.js, focusable.js, form-reset-mixin.js, form.js, ie.js, jquery-1-7.js, keycode.js, labels.js, plugin.js, position.js, safe-active-element.js, safe-blur.js, scroll-parent.js, tabbable.js, unique-id.js, version.js, widget.js
 * Copyright jQuery Foundation and other contributors; Licensed  */
@@ -20,17 +20,17 @@
 // Source: version.js
 $.ui = $.ui || {};
 
-$.ui.version = "1.13.0";
+	$.ui.version = "1.13.1";
 
 // Source: data.js
-/*!
- * jQuery UI :data 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI :data 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: :data Selector
 //>>group: Core
@@ -52,14 +52,14 @@ $.extend( $.expr.pseudos, {
 } );
 
 // Source: disable-selection.js
-/*!
- * jQuery UI Disable Selection 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Disable Selection 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: disableSelection
 //>>group: Core
@@ -86,14 +86,14 @@ $.fn.extend( {
 } );
 
 // Source: focusable.js
-/*!
- * jQuery UI Focusable 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Focusable 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: :focusable Selector
 //>>group: Core
@@ -155,7 +155,6 @@ $.extend( $.expr.pseudos, {
 	}
 } );
 
-// Source: form.js
 // Support: IE8 Only
 // IE8 does not support the form attribute and when it is supplied. It overwrites the form prop
 // with a string, so we need to find the proper form.
@@ -164,14 +163,14 @@ $.fn._form = function() {
 };
 
 // Source: form-reset-mixin.js
-/*!
- * jQuery UI Form Reset Mixin 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Form Reset Mixin 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: Form Reset Mixin
 //>>group: Core
@@ -303,14 +302,14 @@ if ( !$.fn.even || !$.fn.odd ) {
 }
 
 // Source: keycode.js
-/*!
- * jQuery UI Keycode 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Keycode 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: Keycode
 //>>group: Core
@@ -337,14 +336,14 @@ $.ui.keyCode = {
 };
 
 // Source: labels.js
-/*!
- * jQuery UI Labels 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Labels 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: labels
 //>>group: Core
@@ -409,8 +408,8 @@ $.ui.plugin = {
 			return;
 		}
 
-		if ( !allowDisconnected && ( !instance.element[ 0 ].parentNode ||
-				instance.element[ 0 ].parentNode.nodeType === 11 ) ) {
+		if (!allowDisconnected && (!instance.element[0].parentNode ||
+			instance.element[0].parentNode.nodeType === 11)) {
 			return;
 		}
 
@@ -423,16 +422,16 @@ $.ui.plugin = {
 };
 
 // Source: position.js
-/*!
- * jQuery UI Position 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/position/
- */
+	/*!
+	 * jQuery UI Position 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 *
+	 * http://api.jqueryui.com/position/
+	 */
 
 //>>label: Position
 //>>group: Core
@@ -956,14 +955,14 @@ $.ui.safeBlur = function( element ) {
 };
 
 // Source: scroll-parent.js
-/*!
- * jQuery UI Scroll Parent 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Scroll Parent 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: scrollParent
 //>>group: Core
@@ -989,14 +988,14 @@ $.fn.scrollParent = function( includeHidden ) {
 };
 
 // Source: tabbable.js
-/*!
- * jQuery UI Tabbable 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Tabbable 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: :tabbable Selector
 //>>group: Core
@@ -1012,14 +1011,14 @@ $.extend( $.expr.pseudos, {
 } );
 
 // Source: unique-id.js
-/*!
- * jQuery UI Unique ID 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Unique ID 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: uniqueId
 //>>group: Core
@@ -1049,14 +1048,14 @@ $.fn.extend( {
 } );
 
 // Source: widget.js
-/*!
- * jQuery UI Widget 1.13.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
+	/*!
+	 * jQuery UI Widget 1.13.1
+	 * http://jqueryui.com
+	 *
+	 * Copyright jQuery Foundation and other contributors
+	 * Released under the MIT license.
+	 * http://jquery.org/license
+	 */
 
 //>>label: Widget
 //>>group: Core
@@ -1113,8 +1112,8 @@ $.widget = function( name, base, prototype ) {
 	constructor = $[ namespace ][ name ] = function( options, element ) {
 
 		// Allow instantiation without "new" keyword
-		if ( !this._createWidget ) {
-			return new constructor( options, element );
+		if (!this || !this._createWidget) {
+			return new constructor(options, element);
 		}
 
 		// Allow instantiation without initializing for simple inheritance
@@ -1233,7 +1232,7 @@ $.widget.extend = function( target ) {
 						// Don't extend strings, arrays, etc. with objects
 						$.widget.extend( {}, value );
 
-				// Copy everything else by reference
+					// Copy everything else by reference
 				} else {
 					target[ key ] = value;
 				}
@@ -1481,9 +1480,9 @@ $.Widget.prototype = {
 
 		for ( classKey in value ) {
 			currentElements = this.classesElementLookup[ classKey ];
-			if ( value[ classKey ] === this.options.classes[ classKey ] ||
-					!currentElements ||
-					!currentElements.length ) {
+			if (value[classKey] === this.options.classes[classKey] ||
+				!currentElements ||
+				!currentElements.length) {
 				continue;
 			}
 
@@ -1535,20 +1534,24 @@ $.Widget.prototype = {
 		}, options );
 
 		function bindRemoveEvent() {
-			options.element.each( function( _, element ) {
-				var isTracked = $.map( that.classesElementLookup, function( elements ) {
-					return elements;
-				} )
-					.some( function( elements ) {
-						return elements.is( element );
-					} );
+			var nodesToBind = [];
 
-				if ( !isTracked ) {
-					that._on( $( element ), {
-						remove: "_untrackClassesElement"
-					} );
+			options.element.each(function (_, element) {
+				var isTracked = $.map(that.classesElementLookup, function (elements) {
+					return elements;
+				})
+					.some(function (elements) {
+						return elements.is(element);
+					});
+
+				if (!isTracked) {
+					nodesToBind.push(element);
 				}
-			} );
+			});
+
+			that._on($(nodesToBind), {
+				remove: "_untrackClassesElement"
+			});
 		}
 
 		function processClassString( classes, checkOption ) {
@@ -1639,8 +1642,8 @@ $.Widget.prototype = {
 				// - disabled as an array instead of boolean
 				// - disabled class as method for disabling individual parts
 				if ( !suppressDisabledCheck &&
-						( instance.options.disabled === true ||
-						$( this ).hasClass( "ui-state-disabled" ) ) ) {
+					(instance.options.disabled === true ||
+						$(this).hasClass("ui-state-disabled")) ) {
 					return;
 				}
 				return ( typeof handler === "string" ? instance[ handler ] : handler )

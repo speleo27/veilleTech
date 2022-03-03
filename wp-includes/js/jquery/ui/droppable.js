@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Droppable 1.13.0
+ * jQuery UI Droppable 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -34,7 +34,7 @@
 "use strict";
 
 $.widget( "ui.droppable", {
-	version: "1.13.0",
+	version: "1.13.1",
 	widgetEventPrefix: "drop",
 	options: {
 		accept: "*",
@@ -149,15 +149,15 @@ $.widget( "ui.droppable", {
 		var draggable = $.ui.ddmanager.current;
 
 		// Bail if draggable and droppable are same element
-		if ( !draggable || ( draggable.currentItem ||
-				draggable.element )[ 0 ] === this.element[ 0 ] ) {
+		if (!draggable || (draggable.currentItem ||
+			draggable.element)[0] === this.element[0]) {
 			return;
 		}
 
-		if ( this.accept.call( this.element[ 0 ], ( draggable.currentItem ||
-				draggable.element ) ) ) {
+		if (this.accept.call(this.element[0], (draggable.currentItem ||
+			draggable.element))) {
 			this._addHoverClass();
-			this._trigger( "over", event, this.ui( draggable ) );
+			this._trigger("over", event, this.ui(draggable));
 		}
 
 	},
@@ -167,15 +167,15 @@ $.widget( "ui.droppable", {
 		var draggable = $.ui.ddmanager.current;
 
 		// Bail if draggable and droppable are same element
-		if ( !draggable || ( draggable.currentItem ||
-				draggable.element )[ 0 ] === this.element[ 0 ] ) {
+		if (!draggable || (draggable.currentItem ||
+			draggable.element)[0] === this.element[0]) {
 			return;
 		}
 
-		if ( this.accept.call( this.element[ 0 ], ( draggable.currentItem ||
-				draggable.element ) ) ) {
+		if (this.accept.call(this.element[0], (draggable.currentItem ||
+			draggable.element))) {
 			this._removeHoverClass();
-			this._trigger( "out", event, this.ui( draggable ) );
+			this._trigger("out", event, this.ui(draggable));
 		}
 
 	},
@@ -186,8 +186,8 @@ $.widget( "ui.droppable", {
 			childrenIntersection = false;
 
 		// Bail if draggable and droppable are same element
-		if ( !draggable || ( draggable.currentItem ||
-				draggable.element )[ 0 ] === this.element[ 0 ] ) {
+		if (!draggable || (draggable.currentItem ||
+			draggable.element)[0] === this.element[0]) {
 			return false;
 		}
 
@@ -217,12 +217,12 @@ $.widget( "ui.droppable", {
 			return false;
 		}
 
-		if ( this.accept.call( this.element[ 0 ],
-				( draggable.currentItem || draggable.element ) ) ) {
+		if (this.accept.call(this.element[0],
+			(draggable.currentItem || draggable.element))) {
 			this._removeActiveClass();
 			this._removeHoverClass();
 
-			this._trigger( "drop", event, this.ui( draggable ) );
+			this._trigger("drop", event, this.ui(draggable));
 			return this.element;
 		}
 
@@ -280,29 +280,29 @@ $.ui.intersect = ( function() {
 			r = l + droppable.proportions().width,
 			b = t + droppable.proportions().height;
 
-		switch ( toleranceMode ) {
-		case "fit":
-			return ( l <= x1 && x2 <= r && t <= y1 && y2 <= b );
-		case "intersect":
-			return ( l < x1 + ( draggable.helperProportions.width / 2 ) && // Right Half
-				x2 - ( draggable.helperProportions.width / 2 ) < r && // Left Half
-				t < y1 + ( draggable.helperProportions.height / 2 ) && // Bottom Half
-				y2 - ( draggable.helperProportions.height / 2 ) < b ); // Top Half
-		case "pointer":
-			return isOverAxis( event.pageY, t, droppable.proportions().height ) &&
-				isOverAxis( event.pageX, l, droppable.proportions().width );
-		case "touch":
-			return (
-				( y1 >= t && y1 <= b ) || // Top edge touching
-				( y2 >= t && y2 <= b ) || // Bottom edge touching
-				( y1 < t && y2 > b ) // Surrounded vertically
-			) && (
-				( x1 >= l && x1 <= r ) || // Left edge touching
-				( x2 >= l && x2 <= r ) || // Right edge touching
-				( x1 < l && x2 > r ) // Surrounded horizontally
-			);
-		default:
-			return false;
+		switch (toleranceMode) {
+			case "fit":
+				return (l <= x1 && x2 <= r && t <= y1 && y2 <= b);
+			case "intersect":
+				return (l < x1 + (draggable.helperProportions.width / 2) && // Right Half
+					x2 - (draggable.helperProportions.width / 2) < r && // Left Half
+					t < y1 + (draggable.helperProportions.height / 2) && // Bottom Half
+					y2 - (draggable.helperProportions.height / 2) < b); // Top Half
+			case "pointer":
+				return isOverAxis(event.pageY, t, droppable.proportions().height) &&
+					isOverAxis(event.pageX, l, droppable.proportions().width);
+			case "touch":
+				return (
+					(y1 >= t && y1 <= b) || // Top edge touching
+					(y2 >= t && y2 <= b) || // Bottom edge touching
+					(y1 < t && y2 > b) // Surrounded vertically
+				) && (
+					(x1 >= l && x1 <= r) || // Left edge touching
+					(x2 >= l && x2 <= r) || // Right edge touching
+					(x1 < l && x2 > r) // Surrounded horizontally
+				);
+			default:
+				return false;
 		}
 	};
 } )();
@@ -323,8 +323,8 @@ $.ui.ddmanager = {
 		droppablesLoop: for ( i = 0; i < m.length; i++ ) {
 
 			// No disabled and non-accepted
-			if ( m[ i ].options.disabled || ( t && !m[ i ].accept.call( m[ i ].element[ 0 ],
-					( t.currentItem || t.element ) ) ) ) {
+			if (m[i].options.disabled || (t && !m[i].accept.call(m[i].element[0],
+				(t.currentItem || t.element)))) {
 				continue;
 			}
 
@@ -362,19 +362,19 @@ $.ui.ddmanager = {
 		// Create a copy of the droppables in case the list changes during the drop (#9116)
 		$.each( ( $.ui.ddmanager.droppables[ draggable.options.scope ] || [] ).slice(), function() {
 
-			if ( !this.options ) {
+			if (!this.options) {
 				return;
 			}
-			if ( !this.options.disabled && this.visible &&
-					$.ui.intersect( draggable, this, this.options.tolerance, event ) ) {
-				dropped = this._drop.call( this, event ) || dropped;
+			if (!this.options.disabled && this.visible &&
+				$.ui.intersect(draggable, this, this.options.tolerance, event)) {
+				dropped = this._drop.call(this, event) || dropped;
 			}
 
-			if ( !this.options.disabled && this.visible && this.accept.call( this.element[ 0 ],
-					( draggable.currentItem || draggable.element ) ) ) {
+			if (!this.options.disabled && this.visible && this.accept.call(this.element[0],
+				(draggable.currentItem || draggable.element))) {
 				this.isout = true;
 				this.isover = false;
-				this._deactivate.call( this, event );
+				this._deactivate.call(this, event);
 			}
 
 		} );

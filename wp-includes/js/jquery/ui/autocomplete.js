@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Autocomplete 1.13.0
+ * jQuery UI Autocomplete 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -36,7 +36,7 @@
 "use strict";
 
 $.widget( "ui.autocomplete", {
-	version: "1.13.0",
+	version: "1.13.1",
 	defaultElement: "<input>",
 	options: {
 		appendTo: null,
@@ -62,8 +62,9 @@ $.widget( "ui.autocomplete", {
 
 	requestIndex: 0,
 	pending: 0,
+	liveRegionTimer: null,
 
-	_create: function() {
+	_create: function () {
 
 		// Some browsers only repeat keydown events, not keypress events,
 		// so we use the suppressKeyPress flag to determine if we've already
@@ -102,59 +103,59 @@ $.widget( "ui.autocomplete", {
 				suppressInput = false;
 				suppressKeyPressRepeat = false;
 				var keyCode = $.ui.keyCode;
-				switch ( event.keyCode ) {
-				case keyCode.PAGE_UP:
-					suppressKeyPress = true;
-					this._move( "previousPage", event );
-					break;
-				case keyCode.PAGE_DOWN:
-					suppressKeyPress = true;
-					this._move( "nextPage", event );
-					break;
-				case keyCode.UP:
-					suppressKeyPress = true;
-					this._keyEvent( "previous", event );
-					break;
-				case keyCode.DOWN:
-					suppressKeyPress = true;
-					this._keyEvent( "next", event );
-					break;
-				case keyCode.ENTER:
-
-					// when menu is open and has focus
-					if ( this.menu.active ) {
-
-						// #6055 - Opera still allows the keypress to occur
-						// which causes forms to submit
+				switch (event.keyCode) {
+					case keyCode.PAGE_UP:
 						suppressKeyPress = true;
-						event.preventDefault();
-						this.menu.select( event );
-					}
-					break;
-				case keyCode.TAB:
-					if ( this.menu.active ) {
-						this.menu.select( event );
-					}
-					break;
-				case keyCode.ESCAPE:
-					if ( this.menu.element.is( ":visible" ) ) {
-						if ( !this.isMultiLine ) {
-							this._value( this.term );
+						this._move("previousPage", event);
+						break;
+					case keyCode.PAGE_DOWN:
+						suppressKeyPress = true;
+						this._move("nextPage", event);
+						break;
+					case keyCode.UP:
+						suppressKeyPress = true;
+						this._keyEvent("previous", event);
+						break;
+					case keyCode.DOWN:
+						suppressKeyPress = true;
+						this._keyEvent("next", event);
+						break;
+					case keyCode.ENTER:
+
+						// when menu is open and has focus
+						if (this.menu.active) {
+
+							// #6055 - Opera still allows the keypress to occur
+							// which causes forms to submit
+							suppressKeyPress = true;
+							event.preventDefault();
+							this.menu.select(event);
 						}
-						this.close( event );
+						break;
+					case keyCode.TAB:
+						if (this.menu.active) {
+							this.menu.select(event);
+						}
+						break;
+					case keyCode.ESCAPE:
+						if (this.menu.element.is(":visible")) {
+							if (!this.isMultiLine) {
+								this._value(this.term);
+							}
+							this.close(event);
 
-						// Different browsers have different default behavior for escape
-						// Single press can mean undo or clear
-						// Double press in IE means clear the whole form
-						event.preventDefault();
-					}
-					break;
-				default:
-					suppressKeyPressRepeat = true;
+							// Different browsers have different default behavior for escape
+							// Single press can mean undo or clear
+							// Double press in IE means clear the whole form
+							event.preventDefault();
+						}
+						break;
+					default:
+						suppressKeyPressRepeat = true;
 
-					// search timeout should be triggered before the input value is changed
-					this._searchTimeout( event );
-					break;
+						// search timeout should be triggered before the input value is changed
+						this._searchTimeout(event);
+						break;
 				}
 			},
 			keypress: function( event ) {
@@ -171,19 +172,19 @@ $.widget( "ui.autocomplete", {
 
 				// Replicate some key handlers to allow them to repeat in Firefox and Opera
 				var keyCode = $.ui.keyCode;
-				switch ( event.keyCode ) {
-				case keyCode.PAGE_UP:
-					this._move( "previousPage", event );
-					break;
-				case keyCode.PAGE_DOWN:
-					this._move( "nextPage", event );
-					break;
-				case keyCode.UP:
-					this._keyEvent( "previous", event );
-					break;
-				case keyCode.DOWN:
-					this._keyEvent( "next", event );
-					break;
+				switch (event.keyCode) {
+					case keyCode.PAGE_UP:
+						this._move("previousPage", event);
+						break;
+					case keyCode.PAGE_DOWN:
+						this._move("nextPage", event);
+						break;
+					case keyCode.UP:
+						this._keyEvent("previous", event);
+						break;
+					case keyCode.DOWN:
+						this._keyEvent("next", event);
+						break;
 				}
 			},
 			input: function( event ) {
@@ -263,8 +264,10 @@ $.widget( "ui.autocomplete", {
 				// Announce the value in the liveRegion
 				label = ui.item.attr( "aria-label" ) || item.value;
 				if ( label && String.prototype.trim.call( label ).length ) {
-					this.liveRegion.children().hide();
-					$( "<div>" ).text( label ).appendTo( this.liveRegion );
+					clearTimeout(this.liveRegionTimer);
+					this.liveRegionTimer = this._delay(function () {
+						this.liveRegion.html($("<div>").text(label));
+					}, 100);
 				}
 			},
 			menuselect: function( event, ui ) {
@@ -569,15 +572,15 @@ $.widget( "ui.autocomplete", {
 	},
 
 	_move: function( direction, event ) {
-		if ( !this.menu.element.is( ":visible" ) ) {
-			this.search( null, event );
+		if (!this.menu.element.is(":visible")) {
+			this.search(null, event);
 			return;
 		}
-		if ( this.menu.isFirstItem() && /^previous/.test( direction ) ||
-				this.menu.isLastItem() && /^next/.test( direction ) ) {
+		if (this.menu.isFirstItem() && /^previous/.test(direction) ||
+			this.menu.isLastItem() && /^next/.test(direction)) {
 
-			if ( !this.isMultiLine ) {
-				this._value( this.term );
+			if (!this.isMultiLine) {
+				this._value(this.term);
 			}
 
 			this.menu.blur();
@@ -650,17 +653,19 @@ $.widget( "ui.autocomplete", $.ui.autocomplete, {
 
 	__response: function( content ) {
 		var message;
-		this._superApply( arguments );
-		if ( this.options.disabled || this.cancelSearch ) {
+		this._superApply(arguments);
+		if (this.options.disabled || this.cancelSearch) {
 			return;
 		}
-		if ( content && content.length ) {
-			message = this.options.messages.results( content.length );
+		if (content && content.length) {
+			message = this.options.messages.results(content.length);
 		} else {
 			message = this.options.messages.noResults;
 		}
-		this.liveRegion.children().hide();
-		$( "<div>" ).text( message ).appendTo( this.liveRegion );
+		clearTimeout(this.liveRegionTimer);
+		this.liveRegionTimer = this._delay(function () {
+			this.liveRegion.html($("<div>").text(message));
+		}, 100);
 	}
 } );
 
