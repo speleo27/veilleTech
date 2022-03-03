@@ -4,8 +4,8 @@
 			<div class="row">
 				<div class="col-md-6 col-6">
 					<div class="logo-part" align-items-center>
-						<img src=<?php echo get_template_directory_uri()
-						                    . '/assets/logo/laboiteadevactxt-50.jpg' ?>" >
+						<img src="<?php echo get_template_directory_uri()?>
+						/assets/logo/laboiteadevactxt-50.jpg" >
 						<p>14 grande ruelle 10100 Crancey, Aube France </p>
 					</div>
 				</div>
