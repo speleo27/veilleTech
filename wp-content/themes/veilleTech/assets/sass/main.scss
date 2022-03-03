@@ -1,0 +1,233 @@
+@import "../../../../../../blogVeilleTech/node_modules/bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap");
+
+//color set
+$first-color: #3204d9;
+$second-color: #21d904;
+$background-color: #f2f2f2;
+
+//font selection
+$my-font: Caveat;
+body {
+  margin: 0;
+  padding: 0;
+
+  h1,
+  h2 {
+    font-family: $my-font;
+  }
+
+  header {
+    .header-container {
+      background-color: $first-color;
+    }
+
+    h1 {
+      color: white;
+      margin-left: 50px;
+      @media screen and (min-width: 1024px) {
+        margin-left: 250px;
+      }
+    }
+
+    h1,
+    .hamburger {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hamburger {
+      margin-right: 50px;
+      padding-top: 10px;
+      @media screen and (min-width: 1024px) {
+        margin-right: 250px;
+      }
+    }
+
+    #menu {
+      font-family: Arial;
+      color: white;
+      margin-right: 25px;
+      @media screen and (min-width: 1024px) {
+        margin-right: 250px;
+      }
+
+      ul {
+        display: grid;
+        gap: 15px;
+
+        li {
+          display: inline;
+          grid-row: 1;
+
+          a {
+            //border: solid 1px $second-color;
+            padding: 10px 20px;
+            background-color: $second-color;
+            text-decoration: none;
+            border-radius: 15px;
+            color: white;
+            font-family: Arial;
+            font-weight: bold;
+
+            &:hover {
+              color: $second-color;
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .home {
+    background-color: $background-color;
+
+    .home-container {
+      h2 {
+        color: $first-color;
+      }
+
+      .home-intro {
+        ul {
+          list-style: none;
+
+          li {
+          }
+        }
+      }
+    }
+  }
+
+  .card {
+    border: solid 1px $first-color;
+    box-shadow: 2px 2px 0px lightblue;
+
+    .card-header {
+      background-color: $first-color;
+      font-family: $my-font;
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .card-body {
+      border-top: solid 1px $first-color;
+
+      .card-title {
+        font-family: $my-font;
+        color: $second-color;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .card-text {
+        font-family: Arial;
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        background-color: white;
+        color: $first-color;
+        border: solid 1px $first-color;
+
+        &:hover {
+          color: white;
+          background-color: $first-color;
+        }
+      }
+    }
+  }
+
+  .show-articles {
+    margin: auto;
+  }
+
+  .search {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: block;
+      .card {
+        .card-body {
+          .btn {
+            background-color: $first-color;
+            color: white;
+
+            &:hover {
+              color: $first-color;
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .logo-footer {
+    margin-bottom: 40px;
+  }
+
+  footer {
+    color: $first-color;
+    border-top: solid 1px $first-color;
+    box-shadow: -2px 0px lightblue;
+
+
+  }
+
+  footer h6 {
+    font-family: "arial", serif;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  footer h6:after {
+    position: absolute;
+    content: "";
+    background: white;
+    width: 12%;
+    height: 1px;
+    left: 0;
+    bottom: -20px;
+  }
+
+  .btn-footer {
+    color: $first-color;
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 43px;
+    font-size: 13px;
+    padding: 7px 30px;
+    line-height: 47px;
+  }
+
+  .btn-footer:hover {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $second-color;
+  }
+
+  .logo-part {
+    border-right: 1px solid $first-color;
+    height: 100%;
+    margin-left: 25px;
+    @media screen and(min-width: 1024px) {
+      margin-left: 250px;
+    }
+
+    img {
+      width: 15%;
+    }
+
+    .society-link {
+      margin-right: 25px;
+      @media screen and (min-width: 1024px) {
+        margin-right: 250px;
+
+      }
+    }
+  }
+}
