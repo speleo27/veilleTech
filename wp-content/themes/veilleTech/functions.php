@@ -5,6 +5,8 @@ add_theme_support( 'post-thumbnails' );
 
 // Ajouter automatiquement le titre du site dans l'en-tête du site
 add_theme_support( 'title-tag' );
+add_theme_support('widgets');
+add_theme_support('widgets-block-editor');
 
 /**
  * style css
@@ -46,7 +48,27 @@ function add_additional_class_on_li( $classes, $item, $args ) {
 add_filter( 'nav_menu_css_class', 'add_additional_class_on_li', 1, 3 );
 
 
-register_sidebar( array(
-	'id'   => 'search',
-	'name' => 'Blog',
-) );
+function add_widgets_init($cardTitle){
+	register_sidebar(array(
+		'id'=>'search',
+		'class'=>'card',
+		'name'=>__('search','veilleTech'),
+		'description'=>__("Section Widgets", 'veilleTech'),
+		'before_title'=>'<div class="card-header">
+							'.$cardTitle.'
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">',
+		'after_title'=>'<p class="card-text">',
+		'before_widget'=>'<div class="card mb-3 widget %2$s" id="%1$s">',
+		'after_widget' =>'</div>'
+	));
+
+}
+add_action('widgets_init','add_widgets_init');
+
+function veilleTech_remove_menu_pages() {
+	remove_menu_page( 'tools.php' );
+	remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'veilleTech_remove_menu_pages' );

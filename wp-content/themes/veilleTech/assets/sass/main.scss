@@ -153,6 +153,12 @@ body {
 
   .search {
     display: none;
+
+    h2 {
+      background-color: $first-color;
+      color: white;
+    }
+
     @media screen and (min-width: 1024px) {
       display: block;
       .card {
@@ -167,6 +173,9 @@ body {
             }
           }
         }
+      }
+      .widget {
+        list-style: none;
       }
     }
   }

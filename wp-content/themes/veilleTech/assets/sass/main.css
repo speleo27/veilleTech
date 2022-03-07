@@ -11241,6 +11241,10 @@ body .show-articles {
 body .search {
   display: none;
 }
+body .search h2, body .search .h2 {
+  background-color: #3204d9;
+  color: white;
+}
 @media screen and (min-width: 1024px) {
   body .search {
     display: block;
@@ -11252,6 +11256,9 @@ body .search {
   body .search .card .card-body .btn:hover {
     color: #3204d9;
     background-color: white;
+  }
+  body .search .widget {
+    list-style: none;
   }
 }
 body .logo-footer {
