@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<?php wp_head(); ?>
 </head>
@@ -28,12 +28,12 @@
 				</svg>
 			</div>
 		</div>
-		<div class="menu d-none d-flex justify-content-end " id="menu">
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</div>
+		<?php wp_nav_menu( array(
+				'theme_location'  => 'header-menu',
+				'container_class' => 'menu d-none  justify-content-end',
+				'container_id'    => 'menu',
+				'add_li_class'    => 'btn mb-2 d-block'
+		) ); ?>
+	</div>
 	</div>
 </header>

@@ -46,19 +46,7 @@
 		</section>
 
 		<section class="search col-4">
-			<div class="card mb-3">
-				<div class="card-header">
-					Rechercher
-				</div>
-				<div class="card-body">
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Search article"
-						       aria-label="Search article" aria-describedby="button-addon2">
-						<button class="btn " type="button" id="button-addon2">Search</button>
-					</div>
-
-				</div>
-			</div>
+			<?php get_search_form();?>
 			<div class="card mb-3">
 				<div class="card-header">
 					Archives

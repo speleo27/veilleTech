@@ -1,4 +1,4 @@
-@import "/../../veilleTech/node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap");
 
 //color set
@@ -50,15 +50,22 @@ body {
       margin-right: 25px;
       @media screen and (min-width: 1024px) {
         margin-right: 250px;
+        display: flex;
       }
 
       ul {
-        display: grid;
-        gap: 15px;
+        @media screen and (min-width: 1024px) {
+          display: grid;
+          gap: 15px;
+        }
 
         li {
-          display: inline;
-          grid-row: 1;
+          list-style: none;
+          @media screen and (min-width: 1024px) {
+            display: inline;
+            grid-row: 1;
+          }
+
 
           a {
             //border: solid 1px $second-color;
@@ -74,6 +81,7 @@ body {
               color: $second-color;
               background-color: white;
             }
+
           }
         }
       }

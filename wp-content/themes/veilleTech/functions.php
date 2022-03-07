@@ -24,3 +24,29 @@ function add_theme_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
+
+/*
+ * Nav
+ */
+
+function register_my_menu() {
+	register_nav_menu( 'header-menu', __( 'Menu principal' ) );
+}
+
+add_action( 'init', 'register_my_menu' );
+
+function add_additional_class_on_li( $classes, $item, $args ) {
+	if ( isset( $args->add_li_class ) ) {
+		$classes[] = $args->add_li_class;
+	}
+
+	return $classes;
+}
+
+add_filter( 'nav_menu_css_class', 'add_additional_class_on_li', 1, 3 );
+
+
+register_sidebar( array(
+	'id'   => 'search',
+	'name' => 'Blog',
+) );
