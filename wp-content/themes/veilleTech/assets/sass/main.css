@@ -11238,12 +11238,33 @@ body .card .card-body .btn:hover {
 body .show-articles {
   margin: auto;
 }
+body .show-articles .com {
+  border: 1px solid #3204d9;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
 body .search {
   display: none;
+}
+body .search footer {
+  border: 0;
+  box-shadow: 0 0;
 }
 body .search h2, body .search .h2 {
   background-color: #3204d9;
   color: white;
+  padding: 0 1.5rem;
+}
+body .search .wp-block-search__inside-wrapper {
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+}
+body .search ul {
+  padding: 0 1.5rem;
+  list-style: none;
+}
+body .search ul li {
+  padding-left: 1.5rem;
 }
 @media screen and (min-width: 1024px) {
   body .search {
@@ -11267,21 +11288,12 @@ body .logo-footer {
 body footer {
   color: #3204d9;
   border-top: solid 1px #3204d9;
-  box-shadow: -2px 0px lightblue;
+  box-shadow: 0 -2px lightblue;
 }
 body footer h6, body footer .h6 {
   font-family: "arial", serif;
   margin-bottom: 40px;
   position: relative;
-}
-body footer h6:after, body footer .h6:after {
-  position: absolute;
-  content: "";
-  background: white;
-  width: 12%;
-  height: 1px;
-  left: 0;
-  bottom: -20px;
 }
 body .btn-footer {
   color: #3204d9;
@@ -11302,23 +11314,9 @@ body a:hover {
 body .logo-part {
   border-right: 1px solid #3204d9;
   height: 100%;
-  margin-left: 25px;
-}
-@media screen and (min-width: 1024px) {
-  body .logo-part {
-    margin-left: 250px;
-  }
 }
 body .logo-part img {
   width: 15%;
-}
-body .logo-part .society-link {
-  margin-right: 25px;
-}
-@media screen and (min-width: 1024px) {
-  body .logo-part .society-link {
-    margin-right: 250px;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

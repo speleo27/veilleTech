@@ -1,12 +1,13 @@
 <footer class="footer-container py-4 mt-4 w-auto">
-	<div class="row justify-content-between text-center">
-		<div class="society-visual">
-			<div class="row">
+		<div class="society-visual container ">
+			<div class="row d-flex justify-content-between gx-0">
 				<div class="col-md-6 col-6">
-					<div class="logo-part" align-items-center>
-						<img src="<?php echo get_template_directory_uri()?>
-						/assets/logo/laboiteadevactxt-50.jpg" >
-						<p>14 grande ruelle 10100 Crancey, Aube France </p>
+					<div class="logo-part align-items-center" >
+						<div class="text-center">
+							<img src="<?php echo get_template_directory_uri()?>
+							/assets/logo/laboiteadevactxt-50.jpg" >
+						</div>
+						<p class="text-center">14 grande ruelle 10100 Crancey, Aube France </p>
 					</div>
 				</div>
 				<div class=" society-link col-md-6 px-4 col-6">
@@ -21,7 +22,8 @@
 					</div>
 				</div>
 			</div>
-			<p class="px-2 mt-1">Template réalisé par la boite a dev © SAS la boite a dev
+
+			<p class="px-2 mt-1 text-center">Template réalisé par la boite a dev © SAS la boite a dev
 				2022</p>
 		</div>
 </footer>

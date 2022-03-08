@@ -50,31 +50,9 @@
 
 			<section class="search col-4">
 				<?php
-				get_search_form();
 				if ( is_active_sidebar( 'search' ) ):
 					dynamic_sidebar( 'search' ); ?>
-					<!--					<div class="card mb-3 ">-->
-					<!--						<div class="card-header widget-title">-->
-					<!--							Archives-->
-					<!--						</div>-->
-					<!--						<div class="card-body">-->
-					<!--							<h5 class="card-title widget-title">Archive</h5>-->
-					<!--							<p class="card-text widget-text">With supporting text below as a natural-->
-					<!--								lead-in to-->
-					<!--								additional content.</p>-->
-					<!--						</div>-->
-					<!--					</div>-->
-					<!--					<div class="card mb-3 ">-->
-					<!--						<div class="card-header widget-title">-->
-					<!--							Derniers commentaires-->
-					<!--						</div>-->
-					<!--						<div class="card-body">-->
-					<!--							<h5 class="card-title widget-title">Special title treatment</h5>-->
-					<!--							<p class="card-text widget-text">With supporting text below as a natural-->
-					<!--								lead-in to-->
-					<!--								additional content.</p>-->
-					<!--						</div>-->
-					<!--					</div>-->
+
 				<?php
 				endif;
 				?>

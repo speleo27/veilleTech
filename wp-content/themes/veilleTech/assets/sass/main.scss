@@ -149,16 +149,34 @@ body {
 
   .show-articles {
     margin: auto;
+    .com{
+      border: 1px solid $first-color;
+      border-radius: 10px;
+      background-color: lightgrey;
+    }
   }
-
-  .search {
+    .search {
     display: none;
-
+    footer{
+      border: 0;
+      box-shadow: 0 0 ;
+    }
     h2 {
       background-color: $first-color;
       color: white;
+      padding:0 1.5rem;
     }
-
+    .wp-block-search__inside-wrapper {
+      padding: 0 1.5rem;
+      margin-bottom: 1rem;
+    }
+    ul{
+      padding: 0 1.5rem;
+      list-style: none;
+      li{
+        padding-left: 1.5rem;
+      }
+    }
     @media screen and (min-width: 1024px) {
       display: block;
       .card {
@@ -187,7 +205,7 @@ body {
   footer {
     color: $first-color;
     border-top: solid 1px $first-color;
-    box-shadow: -2px 0px lightblue;
+    box-shadow: 0 -2px lightblue;
 
 
   }
@@ -198,15 +216,6 @@ body {
     position: relative;
   }
 
-  footer h6:after {
-    position: absolute;
-    content: "";
-    background: white;
-    width: 12%;
-    height: 1px;
-    left: 0;
-    bottom: -20px;
-  }
 
   .btn-footer {
     color: $first-color;
@@ -230,9 +239,9 @@ body {
   .logo-part {
     border-right: 1px solid $first-color;
     height: 100%;
-    margin-left: 25px;
+    //margin-left: 25px;
     @media screen and(min-width: 1024px) {
-      margin-left: 250px;
+      //margin-left: 250px;
     }
 
     img {
@@ -240,9 +249,9 @@ body {
     }
 
     .society-link {
-      margin-right: 25px;
+      //margin-right: 25px;
       @media screen and (min-width: 1024px) {
-        margin-right: 250px;
+        //margin-right: 250px;
 
       }
     }
