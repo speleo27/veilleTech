@@ -11282,6 +11282,12 @@ body .search ul li {
     list-style: none;
   }
 }
+body .contact .btn {
+  border: 1px solid #3204d9;
+  border-radius: 10px;
+  color: #3204d9;
+  margin-left: 70px;
+}
 body .logo-footer {
   margin-bottom: 40px;
 }
@@ -11290,26 +11296,35 @@ body footer {
   border-top: solid 1px #3204d9;
   box-shadow: 0 -2px lightblue;
 }
+body #footer ul {
+  text-decoration: none;
+}
+body #footer ul li {
+  text-decoration: none;
+  list-style: none;
+  color: #3204d9;
+  border: 1px solid;
+  border-radius: 20px;
+  width: auto;
+}
+body #footer ul li a {
+  font-size: 1rem;
+  text-decoration: none;
+}
+body #footer ul li .btn-footer {
+  width: auto;
+}
+body #footer ul li .btn-footer:hover {
+  text-decoration: none;
+}
+body #footer ul li a:hover {
+  text-decoration: none;
+  color: #21d904;
+}
 body footer h6, body footer .h6 {
   font-family: "arial", serif;
   margin-bottom: 40px;
   position: relative;
-}
-body .btn-footer {
-  color: #3204d9;
-  text-decoration: none;
-  border: 1px solid;
-  border-radius: 43px;
-  font-size: 13px;
-  padding: 7px 30px;
-  line-height: 47px;
-}
-body .btn-footer:hover {
-  text-decoration: none;
-}
-body a:hover {
-  text-decoration: none;
-  color: #21d904;
 }
 body .logo-part {
   border-right: 1px solid #3204d9;

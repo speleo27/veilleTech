@@ -149,34 +149,42 @@ body {
 
   .show-articles {
     margin: auto;
-    .com{
+
+    .com {
       border: 1px solid $first-color;
       border-radius: 10px;
       background-color: lightgrey;
     }
   }
-    .search {
+
+  .search {
     display: none;
-    footer{
+
+    footer {
       border: 0;
-      box-shadow: 0 0 ;
+      box-shadow: 0 0;
     }
+
     h2 {
       background-color: $first-color;
       color: white;
-      padding:0 1.5rem;
+      padding: 0 1.5rem;
     }
+
     .wp-block-search__inside-wrapper {
       padding: 0 1.5rem;
       margin-bottom: 1rem;
     }
-    ul{
+
+    ul {
       padding: 0 1.5rem;
       list-style: none;
-      li{
+
+      li {
         padding-left: 1.5rem;
       }
     }
+
     @media screen and (min-width: 1024px) {
       display: block;
       .card {
@@ -198,16 +206,55 @@ body {
     }
   }
 
+  .contact {
+    .btn{
+      border: 1px solid $first-color;
+      border-radius: 10px;
+      color: $first-color;
+      margin-left: 70px;
+    }
+  }
+
   .logo-footer {
     margin-bottom: 40px;
   }
 
-  footer {
+  footer{
     color: $first-color;
     border-top: solid 1px $first-color;
     box-shadow: 0 -2px lightblue;
 
+  }
+  #footer{
+    ul {
+      text-decoration: none;
 
+      li {
+        text-decoration: none;
+        list-style: none;
+        color: $first-color;
+        border: 1px solid;
+        border-radius: 20px;
+        width: auto;
+
+        a {
+          font-size: 1rem;
+          text-decoration: none;
+
+        }
+        .btn-footer{
+          width: auto;
+        }
+        .btn-footer:hover {
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: none;
+          color: $second-color;
+        }
+      }
+    }
   }
 
   footer h6 {
@@ -217,24 +264,7 @@ body {
   }
 
 
-  .btn-footer {
-    color: $first-color;
-    text-decoration: none;
-    border: 1px solid;
-    border-radius: 43px;
-    font-size: 13px;
-    padding: 7px 30px;
-    line-height: 47px;
-  }
 
-  .btn-footer:hover {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: $second-color;
-  }
 
   .logo-part {
     border-right: 1px solid $first-color;
