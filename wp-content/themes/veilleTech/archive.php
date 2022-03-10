@@ -23,7 +23,7 @@
 						?></p>
 				</div>
 			<?php endwhile; endif; ?>
-			<?php posts_nav_link(); ?>
+			<?php the_posts_pagination(); ?>
 		</main>
 	</section>
 	<section class="search col-4">

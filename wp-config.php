@@ -96,3 +96,6 @@ if ( ! defined( 'ABSPATH' ) )
 
 /** Réglage des variables de WordPress et de ses fichiers inclus. */
 require_once( ABSPATH . 'wp-settings.php' );
+
+/** supprimer le menu edition de code */
+define('DISALLOW_FILE_EDIT',true);

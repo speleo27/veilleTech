@@ -2,22 +2,9 @@
 	<section class="home">
 
 		<div class="home-container container py-2">
-			<h2 class="display-2">Acceuil</h2>
+			<h2 class="display-2"><?= get_theme_mod('title');?></h2>
 			<div class="home-intro ms-5">
-				<p>Ce blog est prévu pour les développeurs qui souhaitent se tenir informé en un
-					coup d'oeil des dernières nouvelles dans le monde du numérique.</p>
-				<p>Ce blog références toutes les informations pertinantes dans les différentes
-					catégories. Nous les avons défini de la facon suivante pour vous facilité la
-					lecture:
-				</p>
-				<ul>
-					<li>Code : comprend tous les nouveautées en matière de développement</li>
-					<li>Systeme: comprend toutes les informations sur les différents systèmes
-						d'expoitation
-					</li>
-					<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-				</ul>
-				<p></p>
+				<p><?= get_theme_mod('text');?></p>
 			</div>
 		</div>
 	</section>
