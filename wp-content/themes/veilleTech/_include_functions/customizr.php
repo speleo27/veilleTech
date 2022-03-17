@@ -311,3 +311,113 @@ function diwp_customizer_add_colorPicker( $wp_customize ) {
 
 add_action( 'customize_register', 'diwp_customizer_add_colorPicker' );
 
+function diwp_generate_theme_option_css(){
+
+	$themeColor = get_theme_mod('firstColor');
+	$secondColor = get_theme_mod('secondColor');
+	$thirdColor = get_theme_mod('thirdColor');
+	$fourthColor = get_theme_mod('fourthColor');
+
+	if(!empty($themeColor)):
+
+		?>
+		<style type="text/css" id="diwp-theme-option-css">
+			.header-container{
+				background-color: <?= $themeColor?>;
+			}
+			h1{
+				color: <?= $fourthColor?>;
+			}
+			#menu{
+                color: <?= $fourthColor?>;
+			}
+			#menu>ul>li>a{
+				background-color: <?= $secondColor ?>;
+                color:
+			}
+			#menu>ul>li>a:hover{
+				background-color: <?= $fourthColor?> ;
+				color:<?= $secondColor ?>
+			}
+			.home{
+				background-color: <?= $fourthColor?> ;
+			}
+			div.home-container{
+				background-color: <?= $thirdColor ?>;
+			}
+			.home-container>h2{
+				color: <?= $themeColor?>;
+			}
+			.card{
+				border: solid 1px <?= $themeColor ?>
+			}
+
+			.card-header{
+				background-color: <?= $themeColor ?>;
+				color:<?= $fourthColor ?>;
+			}
+			 .card-body{
+                 border-top: solid 1px <?=$themeColor?> ;
+			 }
+			 .card-title{
+				 color:<?= $secondColor ?>;
+			 }
+			 .btn{
+				 background-color: <?= $fourthColor ?> ;
+				 color: <?=$themeColor?>;
+                 border: solid 1px <?= $themeColor ?>
+			 }
+			 .btn:hover{
+				 color:<?= $fourthColor ?> ;
+                 background-color:<?=$themeColor?>;
+			 }
+
+			 .com{
+                 border-top: solid 1px <?=$themeColor?> ;
+                 background-color:<?= $thirdColor ?>;
+			 }
+			 .search>.card>div>div>h2{
+                 background-color:<?=$themeColor?>;
+                 color:<?= $fourthColor ?> ;
+			 }
+			 @media screen and (min-width: 1024px){
+				 .card>.card-body>.btn{
+                     background-color:<?=$themeColor?>;
+                     color:<?= $fourthColor ?> ;
+				 }
+                 .card>.card-body>.btn:hover{
+                     background-color:<?= $fourthColor ?> ;
+                     color:<?=$themeColor?>;
+                 }
+			 }
+			.contact>.btn{
+                color:<?=$themeColor?>;
+                border-top: solid 1px <?=$themeColor?> ;
+			}
+			footer{
+				color: <?=$themeColor?> ;
+                border-top: solid 1px <?=$themeColor?> ;
+            }
+			#footer>ul>li{
+
+                color: <?=$themeColor?> ;
+			}
+			#footer>ul>li>a{
+				color:<?= $themeColor ?>;
+			}
+			#footer>ul>li>a:hover{
+				color:<?= $secondColor ?>;
+			}
+			.logo-part{
+                border-right: 1px solid <?= $themeColor ?>;
+            }
+
+
+		</style>
+
+	<?php
+
+	endif;
+}
+
+add_action( 'wp_head', 'diwp_generate_theme_option_css' );

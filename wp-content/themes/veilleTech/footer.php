@@ -12,6 +12,7 @@
 					                                  .get_theme_mod('company_zip').' '.
 					                                  get_theme_mod('company_city') ;?>
 						</p>
+					<p class="text-center">RCS: <?= get_theme_mod('company_rcs')?></p>
 					<?php if((get_theme_mod('monday')!== '') && (get_theme_mod('tuesday')!== '')&&
 					         (get_theme_mod('wednesday')!== '')&& (get_theme_mod('thursday')!== '')&&
 					         (get_theme_mod('friday')!== '') && (get_theme_mod('saturday')!='') &&
