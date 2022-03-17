@@ -1,4 +1,4 @@
-@import "../../node_modules/bootstrap/scss/bootstrap";
+//@import "../../node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap");
 
 //color set
@@ -207,7 +207,7 @@ body {
   }
 
   .contact {
-    .btn{
+    .btn {
       border: 1px solid $first-color;
       border-radius: 10px;
       color: $first-color;
@@ -219,13 +219,14 @@ body {
     margin-bottom: 40px;
   }
 
-  footer{
+  footer {
     color: $first-color;
     border-top: solid 1px $first-color;
     box-shadow: 0 -2px lightblue;
 
   }
-  #footer{
+
+  #footer {
     ul {
       text-decoration: none;
 
@@ -242,9 +243,11 @@ body {
           text-decoration: none;
 
         }
-        .btn-footer{
+
+        .btn-footer {
           width: auto;
         }
+
         .btn-footer:hover {
           text-decoration: none;
         }
@@ -262,8 +265,6 @@ body {
     margin-bottom: 40px;
     position: relative;
   }
-
-
 
 
   .logo-part {
