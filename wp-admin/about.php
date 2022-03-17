@@ -31,10 +31,8 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 				<?php _e( 'Build the site you&#8217;ve always wanted &#8212; with blocks' ); ?>
 			</div>
 
-			<nav class="about__header-navigation nav-tab-wrapper wp-clearfix"
-			     aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
-				<a href="about.php" class="nav-tab nav-tab-active"
-				   aria-current="page"><?php _e( 'What&#8217;s New' ); ?></a>
+			<nav class="about__header-navigation nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
+				<a href="about.php" class="nav-tab nav-tab-active" aria-current="page"><?php _e( 'What&#8217;s New' ); ?></a>
 				<a href="credits.php" class="nav-tab"><?php _e( 'Credits' ); ?></a>
 				<a href="freedoms.php" class="nav-tab"><?php _e( 'Freedoms' ); ?></a>
 				<a href="privacy.php" class="nav-tab"><?php _e( 'Privacy' ); ?></a>
@@ -43,36 +41,61 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 		<div class="about__section changelog">
 			<div class="column">
-				<h2><?php _e( 'Maintenance Release' ); ?></h2>
+				<h2><?php _e( 'Maintenance and Security Releases' ); ?></h2>
 				<p>
 					<?php
 					printf(
-					/* translators: 1: WordPress version number, 2: plural number of bugs. */
-							_n(
-									'<strong>Version %1$s</strong> addressed %2$s bug.',
-									'<strong>Version %1$s</strong> addressed %2$s bugs.',
-									82
-							),
-							'5.9.1',
-							number_format_i18n( 82 )
+						/* translators: 1: WordPress version number, 2: Plural number of bugs. More than one security issue. */
+						_n(
+							'<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
+							'<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.',
+							1
+						),
+						'5.9.2',
+						number_format_i18n( 1 )
 					);
 					?>
 					<?php
 					printf(
-					/* translators: %s: HelpHub URL. */
-							__( 'For more information, see <a href="%s">the release notes</a>.' ),
-							sprintf(
+						/* translators: %s: HelpHub URL. */
+						__( 'For more information, see <a href="%s">the release notes</a>.' ),
+						sprintf(
 							/* translators: %s: WordPress version. */
-									esc_url( __( 'https://wordpress.org/support/wordpress-version/version-%s/' ) ),
-									sanitize_title( '5.9.1' )
-							)
+							esc_url( __( 'https://wordpress.org/support/wordpress-version/version-%s/' ) ),
+							sanitize_title( '5.9.2' )
+						)
+					);
+					?>
+				</p>
+				<p>
+					<?php
+					printf(
+						/* translators: 1: WordPress version number, 2: plural number of bugs. */
+						_n(
+							'<strong>Version %1$s</strong> addressed %2$s bug.',
+							'<strong>Version %1$s</strong> addressed %2$s bugs.',
+							82
+						),
+						'5.9.1',
+						number_format_i18n( 82 )
+					);
+					?>
+					<?php
+					printf(
+						/* translators: %s: HelpHub URL. */
+						__( 'For more information, see <a href="%s">the release notes</a>.' ),
+						sprintf(
+							/* translators: %s: WordPress version. */
+							esc_url( __( 'https://wordpress.org/support/wordpress-version/version-%s/' ) ),
+							sanitize_title( '5.9.1' )
+						)
 					);
 					?>
 				</p>
 			</div>
 		</div>
 
-		<hr class="is-large"/>
+		<hr class="is-large" />
 
 		<div class="about__section">
 			<h2 class="aligncenter">

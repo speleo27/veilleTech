@@ -73,31 +73,31 @@ return $.effects.define( "explode", "hide", function( options, done ) {
 				.clone()
 				.appendTo( "body" )
 				.wrap( "<div></div>" )
-				.css({
+				.css( {
 					position: "absolute",
 					visibility: "visible",
 					left: -j * width,
 					top: -i * height
-				})
+				} )
 
 				// Select the wrapper - make it overflow: hidden and absolute positioned based on
 				// where the original was located +left and +top equal to the size of pieces
 				.parent()
-				.addClass("ui-effects-explode")
-				.css({
+				.addClass( "ui-effects-explode" )
+				.css( {
 					position: "absolute",
 					overflow: "hidden",
 					width: width,
 					height: height,
-					left: left + (show ? mx * width : 0),
-					top: top + (show ? my * height : 0),
+					left: left + ( show ? mx * width : 0 ),
+					top: top + ( show ? my * height : 0 ),
 					opacity: show ? 0 : 1
-				})
-				.animate({
-					left: left + (show ? 0 : mx * width),
-					top: top + (show ? 0 : my * height),
+				} )
+				.animate( {
+					left: left + ( show ? 0 : mx * width ),
+					top: top + ( show ? 0 : my * height ),
 					opacity: show ? 1 : 0
-				}, options.duration || 500, options.easing, childComplete);
+				}, options.duration || 500, options.easing, childComplete );
 		}
 	}
 

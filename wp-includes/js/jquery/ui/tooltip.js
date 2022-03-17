@@ -40,11 +40,11 @@ $.widget( "ui.tooltip", {
 		classes: {
 			"ui-tooltip": "ui-corner-all ui-widget-shadow"
 		},
-		content: function () {
-			var title = $(this).attr("title");
+		content: function() {
+			var title = $( this ).attr( "title" );
 
 			// Escape title, since we're going from an attribute to raw HTML
-			return $("<a>").text(title).html();
+			return $( "<a>" ).text( title ).html();
 		},
 		hide: true,
 
@@ -216,9 +216,9 @@ $.widget( "ui.tooltip", {
 			that = this,
 			eventType = event ? event.type : null;
 
-		if (typeof contentOption === "string" || contentOption.nodeType ||
-			contentOption.jquery) {
-			return this._open(event, target, contentOption);
+		if ( typeof contentOption === "string" || contentOption.nodeType ||
+			contentOption.jquery ) {
+			return this._open( event, target, contentOption );
 		}
 
 		content = contentOption.call( target[ 0 ], function( response ) {
@@ -348,9 +348,9 @@ $.widget( "ui.tooltip", {
 		// tooltips will handle this in destroy.
 		if ( target[ 0 ] !== this.element[ 0 ] ) {
 			events.remove = function() {
-				var targetElement = this._find(target);
-				if (targetElement) {
-					this._removeTooltip(targetElement.tooltip);
+				var targetElement = this._find( target );
+				if ( targetElement ) {
+					this._removeTooltip( targetElement.tooltip );
 				}
 			};
 		}

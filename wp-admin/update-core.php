@@ -212,17 +212,17 @@ function dismissed_updates() {
 		$hide_text = esc_js( __( 'Hide hidden updates' ) );
 		?>
 		<script type="text/javascript">
-			jQuery(function ($) {
-				$('#show-dismissed').on('click', function () {
-					var isExpanded = ('true' === $(this).attr('aria-expanded'));
+			jQuery( function( $ ) {
+				$( '#show-dismissed' ).on( 'click', function() {
+					var isExpanded = ( 'true' === $( this ).attr( 'aria-expanded' ) );
 
-					if (isExpanded) {
-						$(this).text('<?php echo $show_text; ?>').attr('aria-expanded', 'false');
+					if ( isExpanded ) {
+						$( this ).text( '<?php echo $show_text; ?>' ).attr( 'aria-expanded', 'false' );
 					} else {
-						$(this).text('<?php echo $hide_text; ?>').attr('aria-expanded', 'true');
+						$( this ).text( '<?php echo $hide_text; ?>' ).attr( 'aria-expanded', 'true' );
 					}
 
-					$('#dismissed-updates').toggle('fast');
+					$( '#dismissed-updates' ).toggle( 'fast' );
 				});
 			});
 		</script>

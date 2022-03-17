@@ -225,9 +225,9 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		this._renderMenu( this.menu, this.items );
 
 		this.menuInstance.refresh();
-		this.menuItems = this.menu.find("li")
-			.not(".ui-selectmenu-optgroup")
-			.find(".ui-menu-item-wrapper");
+		this.menuItems = this.menu.find( "li" )
+			.not( ".ui-selectmenu-optgroup" )
+			.find( ".ui-menu-item-wrapper" );
 
 		this._rendered = true;
 
@@ -452,54 +452,54 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 
 		keydown: function( event ) {
 			var preventDefault = true;
-			switch (event.keyCode) {
+			switch ( event.keyCode ) {
 				case $.ui.keyCode.TAB:
 				case $.ui.keyCode.ESCAPE:
-					this.close(event);
+					this.close( event );
 					preventDefault = false;
 					break;
 				case $.ui.keyCode.ENTER:
-					if (this.isOpen) {
-						this._selectFocusedItem(event);
+					if ( this.isOpen ) {
+						this._selectFocusedItem( event );
 					}
 					break;
 				case $.ui.keyCode.UP:
-					if (event.altKey) {
-						this._toggle(event);
+					if ( event.altKey ) {
+						this._toggle( event );
 					} else {
-						this._move("prev", event);
+						this._move( "prev", event );
 					}
 					break;
 				case $.ui.keyCode.DOWN:
-					if (event.altKey) {
-						this._toggle(event);
+					if ( event.altKey ) {
+						this._toggle( event );
 					} else {
-						this._move("next", event);
+						this._move( "next", event );
 					}
 					break;
 				case $.ui.keyCode.SPACE:
-					if (this.isOpen) {
-						this._selectFocusedItem(event);
+					if ( this.isOpen ) {
+						this._selectFocusedItem( event );
 					} else {
-						this._toggle(event);
+						this._toggle( event );
 					}
 					break;
 				case $.ui.keyCode.LEFT:
-					this._move("prev", event);
+					this._move( "prev", event );
 					break;
 				case $.ui.keyCode.RIGHT:
-					this._move("next", event);
+					this._move( "next", event );
 					break;
 				case $.ui.keyCode.HOME:
 				case $.ui.keyCode.PAGE_UP:
-					this._move("first", event);
+					this._move( "first", event );
 					break;
 				case $.ui.keyCode.END:
 				case $.ui.keyCode.PAGE_DOWN:
-					this._move("last", event);
+					this._move( "last", event );
 					break;
 				default:
-					this.menu.trigger(event);
+					this.menu.trigger( event );
 					preventDefault = false;
 			}
 

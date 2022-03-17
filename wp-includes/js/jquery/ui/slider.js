@@ -641,10 +641,10 @@ return $.widget( "ui.slider", $.ui.mouse, {
 			value = this.value();
 			valueMin = this._valueMin();
 			valueMax = this._valueMax();
-			valPercent = (valueMax !== valueMin) ?
-				(value - valueMin) / (valueMax - valueMin) * 100 :
+			valPercent = ( valueMax !== valueMin ) ?
+				( value - valueMin ) / ( valueMax - valueMin ) * 100 :
 				0;
-			_set[this.orientation === "horizontal" ? "left" : "bottom"] = valPercent + "%";
+			_set[ this.orientation === "horizontal" ? "left" : "bottom" ] = valPercent + "%";
 			this.handle.stop( 1, 1 )[ animate ? "animate" : "css" ]( _set, o.animate );
 
 			if ( oRange === "min" && this.orientation === "horizontal" ) {

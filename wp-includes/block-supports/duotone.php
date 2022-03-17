@@ -355,12 +355,11 @@ function wp_tinycolor_string_to_rgb( $color_str ) {
 /**
  * Returns the prefixed id for the duotone filter for use as a CSS id.
  *
- * @param array $preset Duotone preset value as seen in theme.json.
- *
- * @return string Duotone filter CSS id.
  * @since 5.9.1
  * @access private
  *
+ * @param array $preset Duotone preset value as seen in theme.json.
+ * @return string Duotone filter CSS id.
  */
 function wp_get_duotone_filter_id( $preset ) {
 	if ( ! isset( $preset['slug'] ) ) {
@@ -373,37 +372,34 @@ function wp_get_duotone_filter_id( $preset ) {
 /**
  * Returns the CSS filter property url to reference the rendered SVG.
  *
- * @param array $preset Duotone preset value as seen in theme.json.
- *
- * @return string Duotone CSS filter property url value.
  * @since 5.9.0
  * @access private
  *
+ * @param array $preset Duotone preset value as seen in theme.json.
+ * @return string Duotone CSS filter property url value.
  */
 function wp_get_duotone_filter_property( $preset ) {
 	$filter_id = wp_get_duotone_filter_id( $preset );
-
 	return "url('#" . $filter_id . "')";
 }
 
 /**
  * Returns the duotone filter SVG string for the preset.
  *
- * @param array $preset Duotone preset value as seen in theme.json.
- *
- * @return string Duotone SVG filter.
  * @since 5.9.1
  * @access private
  *
+ * @param array $preset Duotone preset value as seen in theme.json.
+ * @return string Duotone SVG filter.
  */
 function wp_get_duotone_filter_svg( $preset ) {
 	$filter_id = wp_get_duotone_filter_id( $preset );
 
 	$duotone_values = array(
-			'r' => array(),
-			'g' => array(),
-			'b' => array(),
-			'a' => array(),
+		'r' => array(),
+		'g' => array(),
+		'b' => array(),
+		'a' => array(),
 	);
 
 	if ( ! isset( $preset['colors'] ) || ! is_array( $preset['colors'] ) ) {
@@ -472,19 +468,15 @@ function wp_get_duotone_filter_svg( $preset ) {
 /**
  * Registers the style and colors block attributes for block types that support it.
  *
- * @param WP_Block_Type $block_type Block Type.
- *
  * @since 5.8.0
  * @access private
  *
+ * @param WP_Block_Type $block_type Block Type.
  */
 function wp_register_duotone_support( $block_type ) {
 	$has_duotone_support = false;
 	if ( property_exists( $block_type, 'supports' ) ) {
-		$has_duotone_support = _wp_array_get( $block_type->supports, array(
-				'color',
-				'__experimentalDuotone'
-		), false );
+		$has_duotone_support = _wp_array_get( $block_type->supports, array( 'color', '__experimentalDuotone' ), false );
 	}
 
 	if ( $has_duotone_support ) {
@@ -494,7 +486,7 @@ function wp_register_duotone_support( $block_type ) {
 
 		if ( ! array_key_exists( 'style', $block_type->attributes ) ) {
 			$block_type->attributes['style'] = array(
-					'type' => 'object',
+				'type' => 'object',
 			);
 		}
 	}
@@ -521,15 +513,15 @@ function wp_render_duotone_support( $block_content, $block ) {
 	$has_duotone_attribute = isset( $block['attrs']['style']['color']['duotone'] );
 
 	if (
-			! $duotone_support ||
-			! $has_duotone_attribute
+		! $duotone_support ||
+		! $has_duotone_attribute
 	) {
 		return $block_content;
 	}
 
 	$filter_preset   = array(
-			'slug'   => uniqid(),
-			'colors' => $block['attrs']['style']['color']['duotone'],
+		'slug'   => uniqid(),
+		'colors' => $block['attrs']['style']['color']['duotone'],
 	);
 	$filter_property = wp_get_duotone_filter_property( $filter_preset );
 	$filter_id       = wp_get_duotone_filter_id( $filter_preset );
@@ -546,41 +538,41 @@ function wp_render_duotone_support( $block_content, $block ) {
 	// !important is needed because these styles render before global styles,
 	// and they should be overriding the duotone filters set by global styles.
 	$filter_style = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG
-			? $selector . " {\n\tfilter: " . $filter_property . " !important;\n}\n"
-			: $selector . '{filter:' . $filter_property . ' !important;}';
+		? $selector . " {\n\tfilter: " . $filter_property . " !important;\n}\n"
+		: $selector . '{filter:' . $filter_property . ' !important;}';
 
 	wp_register_style( $filter_id, false, array(), true, true );
 	wp_add_inline_style( $filter_id, $filter_style );
 	wp_enqueue_style( $filter_id );
 
 	add_action(
-			'wp_footer',
-			static function () use ( $filter_svg, $selector ) {
-				echo $filter_svg;
+		'wp_footer',
+		static function () use ( $filter_svg, $selector ) {
+			echo $filter_svg;
 
-				/*
-			   * Safari renders elements incorrectly on first paint when the SVG
-			   * filter comes after the content that it is filtering, so we force
-			   * a repaint with a WebKit hack which solves the issue.
-			   */
-				global $is_safari;
-				if ( $is_safari ) {
-					printf(
+			/*
+			 * Safari renders elements incorrectly on first paint when the SVG
+			 * filter comes after the content that it is filtering, so we force
+			 * a repaint with a WebKit hack which solves the issue.
+			 */
+			global $is_safari;
+			if ( $is_safari ) {
+				printf(
 					// Simply accessing el.offsetHeight flushes layout and style
 					// changes in WebKit without having to wait for setTimeout.
-							'<script>( function() { var el = document.querySelector( %s ); var display = el.style.display; el.style.display = "none"; el.offsetHeight; el.style.display = display; } )();</script>',
-							wp_json_encode( $selector )
-					);
-				}
+					'<script>( function() { var el = document.querySelector( %s ); var display = el.style.display; el.style.display = "none"; el.offsetHeight; el.style.display = display; } )();</script>',
+					wp_json_encode( $selector )
+				);
 			}
+		}
 	);
 
 	// Like the layout hook, this assumes the hook only applies to blocks with a single wrapper.
 	return preg_replace(
-			'/' . preg_quote( 'class="', '/' ) . '/',
-			'class="' . $filter_id . ' ',
-			$block_content,
-			1
+		'/' . preg_quote( 'class="', '/' ) . '/',
+		'class="' . $filter_id . ' ',
+		$block_content,
+		1
 	);
 }
 

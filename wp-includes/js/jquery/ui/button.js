@@ -240,7 +240,7 @@ $.widget( "ui.button", {
 
 		// Make sure we can't end up with a button that has neither text nor icon
 		if ( key === "showLabel" ) {
-			this._toggleClass("ui-button-icon-only", null, !value);
+			this._toggleClass( "ui-button-icon-only", null, !value );
 			this._updateTooltip();
 		}
 
@@ -302,18 +302,18 @@ if ( $.uiBackCompat !== false ) {
 			if ( this.options.showLabel && !this.options.text ) {
 				this.options.showLabel = this.options.text;
 			}
-			if (!this.options.showLabel && this.options.text) {
+			if ( !this.options.showLabel && this.options.text ) {
 				this.options.text = this.options.showLabel;
 			}
-			if (!this.options.icon && (this.options.icons.primary ||
-				this.options.icons.secondary)) {
-				if (this.options.icons.primary) {
+			if ( !this.options.icon && ( this.options.icons.primary ||
+				this.options.icons.secondary ) ) {
+				if ( this.options.icons.primary ) {
 					this.options.icon = this.options.icons.primary;
 				} else {
 					this.options.icon = this.options.icons.secondary;
 					this.options.iconPosition = "end";
 				}
-			} else if (this.options.icon) {
+			} else if ( this.options.icon ) {
 				this.options.icons.primary = this.options.icon;
 			}
 			this._super();

@@ -2998,24 +2998,24 @@ function reducer_undo() {
         nextState.offset = state.offset + (action.meta.isUndo ? -1 : 1);
 
         if (state.flattenedUndo) {
-	        // The first undo in a sequence of undos might happen while we have
-	        // flattened undos in state. If this is the case, we want execution
-	        // to continue as if we were creating an explicit undo level. This
-	        // will result in an extra undo level being appended with the flattened
-	        // undo values.
-	        // We also have to take into account if the `lastEditAction` had opted out
-	        // of being tracked in undo history, like the action that persists the latest
-	        // content right before saving. In that case we have to update the `lastEditAction`
-	        // to avoid returning early before applying the existing flattened undos.
-	        isCreateUndoLevel = true;
+          // The first undo in a sequence of undos might happen while we have
+          // flattened undos in state. If this is the case, we want execution
+          // to continue as if we were creating an explicit undo level. This
+          // will result in an extra undo level being appended with the flattened
+          // undo values.
+          // We also have to take into account if the `lastEditAction` had opted out
+          // of being tracked in undo history, like the action that persists the latest
+          // content right before saving. In that case we have to update the `lastEditAction`
+          // to avoid returning early before applying the existing flattened undos.
+          isCreateUndoLevel = true;
 
-	        if (!lastEditAction.meta.undo) {
-		        lastEditAction.meta.undo = {
-			        edits: {}
-		        };
-	        }
+          if (!lastEditAction.meta.undo) {
+            lastEditAction.meta.undo = {
+              edits: {}
+            };
+          }
 
-	        action = lastEditAction;
+          action = lastEditAction;
         } else {
           return nextState;
         }

@@ -416,95 +416,82 @@
 .wp-block-cover.has-background-dim:not(.has-background-gradient)::before,
 .wp-block-cover .has-background-dim:not(.has-background-gradient)::before,
 .wp-block-cover .wp-block-cover__gradient-background {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    opacity: 0.5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.5;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-10:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-10 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-10:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-10 .wp-block-cover__gradient-background {
-    opacity: 0.1;
+  opacity: 0.1;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-20:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-20 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-20:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-20 .wp-block-cover__gradient-background {
-    opacity: 0.2;
+  opacity: 0.2;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-30:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-30 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-30:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-30 .wp-block-cover__gradient-background {
-    opacity: 0.3;
+  opacity: 0.3;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-40:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-40 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-40:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-40 .wp-block-cover__gradient-background {
-    opacity: 0.4;
+  opacity: 0.4;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-50:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-50 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-50:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-50 .wp-block-cover__gradient-background {
-    opacity: 0.5;
+  opacity: 0.5;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-60:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-60 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-60:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-60 .wp-block-cover__gradient-background {
-    opacity: 0.6;
+  opacity: 0.6;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-70:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-70 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-70:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-70 .wp-block-cover__gradient-background {
-    opacity: 0.7;
+  opacity: 0.7;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-80:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-80 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-80:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-80 .wp-block-cover__gradient-background {
-    opacity: 0.8;
+  opacity: 0.8;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-90:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-90 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-90:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-90 .wp-block-cover__gradient-background {
-    opacity: 0.9;
+  opacity: 0.9;
 }
-
 .wp-block-cover-image.has-background-dim.has-background-dim-100:not(.has-background-gradient)::before,
 .wp-block-cover-image.has-background-dim.has-background-dim-100 .wp-block-cover__gradient-background,
 .wp-block-cover.has-background-dim.has-background-dim-100:not(.has-background-gradient)::before,
 .wp-block-cover.has-background-dim.has-background-dim-100 .wp-block-cover__gradient-background {
-    opacity: 1;
+  opacity: 1;
 }
-
 .wp-block-cover-image .wp-block-cover__gradient-background.has-background-dim.has-background-dim-0,
 .wp-block-cover .wp-block-cover__gradient-background.has-background-dim.has-background-dim-0 {
-    opacity: 0;
+  opacity: 0;
 }
-
 .wp-block-cover-image .wp-block-cover__gradient-background.has-background-dim.has-background-dim-10,
 .wp-block-cover .wp-block-cover__gradient-background.has-background-dim.has-background-dim-10 {
-    opacity: 0.1;
+  opacity: 0.1;
 }
-
 .wp-block-cover-image .wp-block-cover__gradient-background.has-background-dim.has-background-dim-20,
 .wp-block-cover .wp-block-cover__gradient-background.has-background-dim.has-background-dim-20 {
   opacity: 0.2;
@@ -1035,14 +1022,14 @@ section.wp-block-cover-image > h2,
   margin-left: 0;
 }
 .wp-block-gallery.has-nested-images figure.wp-block-image {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    position: relative;
-    margin-top: auto;
-    margin-bottom: auto;
-    flex-direction: column;
-    max-width: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-direction: column;
+  max-width: 100%;
 }
 .wp-block-gallery.has-nested-images figure.wp-block-image > div,
 .wp-block-gallery.has-nested-images figure.wp-block-image > a {
@@ -1051,10 +1038,10 @@ section.wp-block-cover-image > h2,
   flex-grow: 1;
 }
 .wp-block-gallery.has-nested-images figure.wp-block-image img {
-    display: block;
-    height: auto;
-    max-width: 100% !important;
-    width: auto;
+  display: block;
+  height: auto;
+  max-width: 100% !important;
+  width: auto;
 }
 .wp-block-gallery.has-nested-images figure.wp-block-image figcaption {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0, rgba(0, 0, 0, 0.3) 70%, transparent);
@@ -2331,24 +2318,22 @@ p.has-background {
 
 .wp-block-post-template,
 .wp-block-query-loop {
-    margin-top: 0;
-    margin-bottom: 0;
-    max-width: 100%;
-    list-style: none;
-    padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 100%;
+  list-style: none;
+  padding: 0;
 }
-
 .wp-block-post-template.wp-block-post-template,
 .wp-block-query-loop.wp-block-post-template {
-    background: none;
+  background: none;
 }
-
 .wp-block-post-template.is-flex-container,
 .wp-block-query-loop.is-flex-container {
-    flex-direction: row;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25em;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25em;
 }
 .wp-block-post-template.is-flex-container li,
 .wp-block-query-loop.is-flex-container li {
@@ -3238,21 +3223,21 @@ pre.wp-block-verse {
           clip-path: none;
   color: #444;
   display: block;
-    font-size: 1em;
-    height: auto;
-    right: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
+  font-size: 1em;
+  height: auto;
+  right: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
 }
 
 /**
  * Provide baseline responsiveness for images.
  */
 html :where(img) {
-    height: auto;
-    max-width: 100%;
+  height: auto;
+  max-width: 100%;
 }

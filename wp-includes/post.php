@@ -354,8 +354,7 @@ function create_initial_post_types() {
 			),
 			'description'           => __( 'Templates to include in your theme.' ),
 			'public'                => false,
-			'_builtin'              => true,
-			/* internal use only. don't use this when registering your own post type. */
+			'_builtin'              => true, /* internal use only. don't use this when registering your own post type. */
 			'has_archive'           => false,
 			'show_ui'               => false,
 			'show_in_menu'          => false,
@@ -415,8 +414,7 @@ function create_initial_post_types() {
 			),
 			'description'           => __( 'Template parts to include in your templates.' ),
 			'public'                => false,
-			'_builtin'              => true,
-			/* internal use only. don't use this when registering your own post type. */
+			'_builtin'              => true, /* internal use only. don't use this when registering your own post type. */
 			'has_archive'           => false,
 			'show_ui'               => false,
 			'show_in_menu'          => false,
@@ -503,8 +501,7 @@ function create_initial_post_types() {
 			),
 			'description'           => __( 'Navigation menus that can be inserted into your site.' ),
 			'public'                => false,
-			'_builtin'              => true,
-			/* internal use only. don't use this when registering your own post type. */
+			'_builtin'              => true, /* internal use only. don't use this when registering your own post type. */
 			'has_archive'           => false,
 			'show_ui'               => true,
 			'show_in_menu'          => false,

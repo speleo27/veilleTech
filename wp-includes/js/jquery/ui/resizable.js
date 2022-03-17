@@ -227,7 +227,7 @@ $.widget( "ui.resizable", $.ui.mouse, {
 	_setOption: function( key, value ) {
 		this._super( key, value );
 
-		switch (key) {
+		switch ( key ) {
 			case "handles":
 				this._removeHandles();
 				this._setupHandles();
@@ -299,20 +299,20 @@ $.widget( "ui.resizable", $.ui.mouse, {
 					this._on( this.handles[ i ], { "mousedown": that._mouseDown } );
 				}
 
-				if (this.elementIsWrapper &&
-					this.originalElement[0]
+				if ( this.elementIsWrapper &&
+					this.originalElement[ 0 ]
 						.nodeName
-						.match(/^(textarea|input|select|button)$/i)) {
-					axis = $(this.handles[i], this.element);
+						.match( /^(textarea|input|select|button)$/i ) ) {
+					axis = $( this.handles[ i ], this.element );
 
-					padWrapper = /sw|ne|nw|se|n|s/.test(i) ?
+					padWrapper = /sw|ne|nw|se|n|s/.test( i ) ?
 						axis.outerHeight() :
 						axis.outerWidth();
 
-					padPos = ["padding",
-						/ne|nw|n/.test(i) ? "Top" :
-							/se|sw|s/.test(i) ? "Bottom" :
-								/^e$/.test(i) ? "Right" : "Left"].join("");
+					padPos = [ "padding",
+						/ne|nw|n/.test( i ) ? "Top" :
+							/se|sw|s/.test( i ) ? "Bottom" :
+								/^e$/.test( i ) ? "Right" : "Left" ].join( "" );
 
 					target.css( padPos, padWrapper );
 
@@ -1057,27 +1057,27 @@ $.ui.plugin.add( "resizable", "alsoResize", {
 			os = that.originalSize,
 			op = that.originalPosition,
 			delta = {
-				height: (that.size.height - os.height) || 0,
-				width: (that.size.width - os.width) || 0,
-				top: (that.position.top - op.top) || 0,
-				left: (that.position.left - op.left) || 0
+				height: ( that.size.height - os.height ) || 0,
+				width: ( that.size.width - os.width ) || 0,
+				top: ( that.position.top - op.top ) || 0,
+				left: ( that.position.left - op.left ) || 0
 			};
 
-		$(o.alsoResize).each(function () {
-			var el = $(this), start = $(this).data("ui-resizable-alsoresize"), style = {},
-				css = el.parents(ui.originalElement[0]).length ?
-					["width", "height"] :
-					["width", "height", "top", "left"];
+		$( o.alsoResize ).each( function() {
+			var el = $( this ), start = $( this ).data( "ui-resizable-alsoresize" ), style = {},
+				css = el.parents( ui.originalElement[ 0 ] ).length ?
+					[ "width", "height" ] :
+					[ "width", "height", "top", "left" ];
 
-			$.each(css, function (i, prop) {
-				var sum = (start[prop] || 0) + (delta[prop] || 0);
-				if (sum && sum >= 0) {
-					style[prop] = sum || null;
+			$.each( css, function( i, prop ) {
+				var sum = ( start[ prop ] || 0 ) + ( delta[ prop ] || 0 );
+				if ( sum && sum >= 0 ) {
+					style[ prop ] = sum || null;
 				}
-			});
+			} );
 
-			el.css(style);
-		});
+			el.css( style );
+		} );
 	},
 
 	stop: function() {

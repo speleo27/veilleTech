@@ -208,21 +208,21 @@
           clip-path: none;
   color: #444;
   display: block;
-    font-size: 1em;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
 }
 
 /**
  * Provide baseline responsiveness for images.
  */
 html :where(img) {
-    height: auto;
-    max-width: 100%;
+  height: auto;
+  max-width: 100%;
 }

@@ -203,24 +203,24 @@ return $.widget( "ui.accordion", {
 			currentIndex = this.headers.index( event.target ),
 			toFocus = false;
 
-		switch (event.keyCode) {
+		switch ( event.keyCode ) {
 			case keyCode.RIGHT:
 			case keyCode.DOWN:
-				toFocus = this.headers[(currentIndex + 1) % length];
+				toFocus = this.headers[ ( currentIndex + 1 ) % length ];
 				break;
 			case keyCode.LEFT:
 			case keyCode.UP:
-				toFocus = this.headers[(currentIndex - 1 + length) % length];
+				toFocus = this.headers[ ( currentIndex - 1 + length ) % length ];
 				break;
 			case keyCode.SPACE:
 			case keyCode.ENTER:
-				this._eventHandler(event);
+				this._eventHandler( event );
 				break;
 			case keyCode.HOME:
-				toFocus = this.headers[0];
+				toFocus = this.headers[ 0 ];
 				break;
 			case keyCode.END:
-				toFocus = this.headers[length - 1];
+				toFocus = this.headers[ length - 1 ];
 				break;
 		}
 
@@ -243,17 +243,17 @@ return $.widget( "ui.accordion", {
 		this._processPanels();
 
 		// Was collapsed or no panel
-		if ((options.active === false && options.collapsible === true) ||
-			!this.headers.length) {
+		if ( ( options.active === false && options.collapsible === true ) ||
+			!this.headers.length ) {
 			options.active = false;
 			this.active = $();
 
 			// active false only when collapsible is true
-		} else if (options.active === false) {
-			this._activate(0);
+		} else if ( options.active === false ) {
+			this._activate( 0 );
 
 			// was active, but active panel is gone
-		} else if (this.active.length && !$.contains(this.element[0], this.active[0])) {
+		} else if ( this.active.length && !$.contains( this.element[ 0 ], this.active[ 0 ] ) ) {
 
 			// all remaining panel are disabled
 			if ( this.headers.length === this.headers.find( ".ui-state-disabled" ).length ) {
@@ -312,44 +312,44 @@ return $.widget( "ui.accordion", {
 		this.active.next().show();
 
 		this.headers
-			.attr("role", "tab")
-			.each(function () {
-				var header = $(this),
-					headerId = header.uniqueId().attr("id"),
+			.attr( "role", "tab" )
+			.each( function() {
+				var header = $( this ),
+					headerId = header.uniqueId().attr( "id" ),
 					panel = header.next(),
-					panelId = panel.uniqueId().attr("id");
-				header.attr("aria-controls", panelId);
-				panel.attr("aria-labelledby", headerId);
-			})
+					panelId = panel.uniqueId().attr( "id" );
+				header.attr( "aria-controls", panelId );
+				panel.attr( "aria-labelledby", headerId );
+			} )
 			.next()
-			.attr("role", "tabpanel");
+			.attr( "role", "tabpanel" );
 
 		this.headers
-			.not(this.active)
-			.attr({
+			.not( this.active )
+			.attr( {
 				"aria-selected": "false",
 				"aria-expanded": "false",
 				tabIndex: -1
-			})
+			} )
 			.next()
-			.attr({
+			.attr( {
 				"aria-hidden": "true"
-			})
+			} )
 			.hide();
 
 		// Make sure at least one header is in the tab order
 		if ( !this.active.length ) {
 			this.headers.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
-			this.active.attr({
+			this.active.attr( {
 				"aria-selected": "true",
 				"aria-expanded": "true",
 				tabIndex: 0
-			})
+			} )
 				.next()
-				.attr({
+				.attr( {
 					"aria-hidden": "false"
-				});
+				} );
 		}
 
 		this._createIcons();
@@ -455,10 +455,10 @@ return $.widget( "ui.accordion", {
 		if (
 
 			// click on active header, but not collapsible
-			(clickedIsActive && !options.collapsible) ||
+			( clickedIsActive && !options.collapsible ) ||
 
 			// allow canceling activation
-			(this._trigger("beforeActivate", event, eventData) === false)) {
+			( this._trigger( "beforeActivate", event, eventData ) === false ) ) {
 			return;
 		}
 
@@ -532,13 +532,13 @@ return $.widget( "ui.accordion", {
 		}
 
 		toShow
-			.attr("aria-hidden", "false")
+			.attr( "aria-hidden", "false" )
 			.prev()
-			.attr({
+			.attr( {
 				"aria-selected": "true",
 				"aria-expanded": "true",
 				tabIndex: 0
-			});
+			} );
 	},
 
 	_animate: function( toShow, toHide, data ) {
