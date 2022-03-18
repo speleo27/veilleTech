@@ -21,7 +21,7 @@ add_action( 'wp_enqueue_scripts', 'add_theme_style' );
  * scripts js
  */
 function add_theme_scripts() {
-	wp_enqueue_script( 'app', get_template_directory_uri() . '/dist/app.js' );
+	wp_enqueue_script( 'app', get_template_directory_uri() . '/dist/app.js', [], 'false',true );
 }
 
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );

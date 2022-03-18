@@ -666,20 +666,14 @@ class WP_Theme_JSON {
 	 * @since 5.8.0
 	 * @since 5.9.0 Removed the `$type` parameter`, added the `$types` and `$origins` parameters.
 	 *
-	 * @param array $types Types of styles to load. Will load all by default. It accepts:
+	 * @param array $types   Types of styles to load. Will load all by default. It accepts:
 	 *                       - `variables`: only the CSS Custom Properties for presets & custom ones.
 	 *                       - `styles`: only the styles section in theme.json.
 	 *                       - `presets`: only the classes for the presets.
 	 * @param array $origins A list of origins to include. By default it includes VALID_ORIGINS.
 	 * @return string Stylesheet.
 	 */
-	public function get_stylesheet(
-		$types = array(
-			'variables',
-			'styles',
-			'presets'
-		), $origins = null
-	) {
+	public function get_stylesheet( $types = array( 'variables', 'styles', 'presets' ), $origins = null ) {
 		if ( null === $origins ) {
 			$origins = static::VALID_ORIGINS;
 		}
@@ -826,7 +820,7 @@ class WP_Theme_JSON {
 			// 3. Generate the rules that use the duotone selector.
 			if ( isset( $metadata['duotone'] ) && ! empty( $declarations_duotone ) ) {
 				$selector_duotone = static::scope_selector( $metadata['selector'], $metadata['duotone'] );
-				$block_rules      .= static::to_ruleset( $selector_duotone, $declarations_duotone );
+				$block_rules     .= static::to_ruleset( $selector_duotone, $declarations_duotone );
 			}
 
 			if ( static::ROOT_BLOCK_SELECTOR === $selector ) {
@@ -834,11 +828,7 @@ class WP_Theme_JSON {
 				$block_rules .= '.wp-site-blocks > .alignright { float: right; margin-left: 2em; }';
 				$block_rules .= '.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }';
 
-				$has_block_gap_support = _wp_array_get( $this->theme_json, array(
-						'settings',
-						'spacing',
-						'blockGap'
-					) ) !== null;
+				$has_block_gap_support = _wp_array_get( $this->theme_json, array( 'settings', 'spacing', 'blockGap' ) ) !== null;
 				if ( $has_block_gap_support ) {
 					$block_rules .= '.wp-site-blocks > * { margin-top: 0; margin-bottom: 0; }';
 					$block_rules .= '.wp-site-blocks > * + * { margin-top: var( --wp--style--block-gap ); }';
@@ -886,8 +876,8 @@ class WP_Theme_JSON {
 				continue;
 			}
 
-			$selector     = $metadata['selector'];
-			$node         = _wp_array_get( $this->theme_json, $metadata['path'], array() );
+			$selector      = $metadata['selector'];
+			$node          = _wp_array_get( $this->theme_json, $metadata['path'], array() );
 			$preset_rules .= static::compute_preset_classes( $node, $selector, $origins );
 		}
 
@@ -951,8 +941,7 @@ class WP_Theme_JSON {
 		$declaration_block = array_reduce(
 			$declarations,
 			static function ( $carry, $element ) {
-				return $carry .= $element['name'] . ': ' . $element['value'] . ';';
-			},
+				return $carry .= $element['name'] . ': ' . $element['value'] . ';'; },
 			''
 		);
 
@@ -989,9 +978,9 @@ class WP_Theme_JSON {
 	 * @since 5.8.0
 	 * @since 5.9.0 Added the `$origins` parameter.
 	 *
-	 * @param array $settings Settings to process.
+	 * @param array  $settings Settings to process.
 	 * @param string $selector Selector wrapping the classes.
-	 * @param array $origins List of origins to process.
+	 * @param array  $origins  List of origins to process.
 	 * @return string The result of processing the presets.
 	 */
 	protected static function compute_preset_classes( $settings, $selector, $origins ) {
@@ -1006,8 +995,8 @@ class WP_Theme_JSON {
 			$slugs = static::get_settings_slugs( $settings, $preset_metadata, $origins );
 			foreach ( $preset_metadata['classes'] as $class => $property ) {
 				foreach ( $slugs as $slug ) {
-					$css_var    = static::replace_slug_in_string( $preset_metadata['css_vars'], $slug );
-					$class_name = static::replace_slug_in_string( $class, $slug );
+					$css_var     = static::replace_slug_in_string( $preset_metadata['css_vars'], $slug );
+					$class_name  = static::replace_slug_in_string( $class, $slug );
 					$stylesheet .= static::to_ruleset(
 						static::append_to_selector( $selector, $class_name ),
 						array(
@@ -1126,13 +1115,12 @@ class WP_Theme_JSON {
 	/**
 	 * Similar to get_settings_values_by_slug, but doesn't compute the value.
 	 *
-	 * @param array $settings Settings to process.
-	 * @param array $preset_metadata One of the PRESETS_METADATA values.
-	 * @param array $origins List of origins to process.
-	 *
-	 * @return array Array of presets where the key and value are both the slug.
 	 * @since 5.9.0
 	 *
+	 * @param array $settings        Settings to process.
+	 * @param array $preset_metadata One of the PRESETS_METADATA values.
+	 * @param array $origins         List of origins to process.
+	 * @return array Array of presets where the key and value are both the slug.
 	 */
 	protected static function get_settings_slugs( $settings, $preset_metadata, $origins = null ) {
 		if ( null === $origins ) {
@@ -1271,10 +1259,10 @@ class WP_Theme_JSON {
 		$result = array();
 		foreach ( $tree as $property => $value ) {
 			$new_key = $prefix . str_replace(
-					'/',
-					'-',
-					strtolower( _wp_to_kebab_case( $property ) )
-				);
+				'/',
+				'-',
+				strtolower( _wp_to_kebab_case( $property ) )
+			);
 
 			if ( is_array( $value ) ) {
 				$new_prefix = $new_key . $token;
@@ -1301,8 +1289,8 @@ class WP_Theme_JSON {
 	 * @since 5.8.0
 	 * @since 5.9.0 Added the `$settings` and `$properties` parameters.
 	 *
-	 * @param array $styles Styles to process.
-	 * @param array $settings Theme settings.
+	 * @param array $styles    Styles to process.
+	 * @param array $settings  Theme settings.
 	 * @param array $properties Properties metadata.
 	 * @return array Returns the modified $declarations.
 	 */
@@ -1601,11 +1589,10 @@ class WP_Theme_JSON {
 	/**
 	 * Converts all filter (duotone) presets into SVGs.
 	 *
-	 * @param array $origins List of origins to process.
-	 *
-	 * @return string SVG filters.
 	 * @since 5.9.1
 	 *
+	 * @param array $origins List of origins to process.
+	 * @return string SVG filters.
 	 */
 	public function get_svg_filters( $origins ) {
 		$blocks_metadata = static::get_blocks_metadata();
@@ -1636,13 +1623,12 @@ class WP_Theme_JSON {
 	/**
 	 * Returns whether a presets should be overridden or not.
 	 *
-	 * @param array $theme_json The theme.json like structure to inspect.
-	 * @param array $path Path to inspect.
-	 * @param bool|array $override Data to compute whether to override the preset.
-	 *
-	 * @return boolean
 	 * @since 5.9.0
 	 *
+	 * @param array      $theme_json The theme.json like structure to inspect.
+	 * @param array      $path Path to inspect.
+	 * @param bool|array $override Data to compute whether to override the preset.
+	 * @return boolean
 	 */
 	protected static function should_override_preset( $theme_json, $path, $override ) {
 		if ( is_bool( $override ) ) {
@@ -1708,7 +1694,7 @@ class WP_Theme_JSON {
 
 			$slugs_for_preset = array();
 			$slugs_for_preset = array_map(
-				static function ( $value ) {
+				static function( $value ) {
 					return isset( $value['slug'] ) ? $value['slug'] : null;
 				},
 				$preset
@@ -1747,7 +1733,7 @@ class WP_Theme_JSON {
 	 *
 	 * @since 5.9.0
 	 *
-	 * @param array $node The node with the presets to validate.
+	 * @param array $node  The node with the presets to validate.
 	 * @param array $slugs The slugs that should not be overridden.
 	 * @return array The new node.
 	 */
@@ -1922,7 +1908,6 @@ class WP_Theme_JSON {
 	protected static function is_safe_css_declaration( $property_name, $property_value ) {
 		$style_to_validate = $property_name . ': ' . $property_value;
 		$filtered          = esc_html( safecss_filter_attr( $style_to_validate ) );
-
 		return ! empty( trim( $filtered ) );
 	}
 

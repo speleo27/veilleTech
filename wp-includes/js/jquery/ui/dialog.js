@@ -353,10 +353,10 @@ $.widget( "ui.dialog", {
 		this._addClass( this.uiDialog, "ui-dialog", "ui-widget ui-widget-content ui-front" );
 		this._on( this.uiDialog, {
 			keydown: function( event ) {
-				if (this.options.closeOnEscape && !event.isDefaultPrevented() && event.keyCode &&
-					event.keyCode === $.ui.keyCode.ESCAPE) {
+				if ( this.options.closeOnEscape && !event.isDefaultPrevented() && event.keyCode &&
+					event.keyCode === $.ui.keyCode.ESCAPE ) {
 					event.preventDefault();
-					this.close(event);
+					this.close( event );
 					return;
 				}
 
@@ -368,17 +368,17 @@ $.widget( "ui.dialog", {
 					first = tabbables.first(),
 					last = tabbables.last();
 
-				if ((event.target === last[0] || event.target === this.uiDialog[0]) &&
-					!event.shiftKey) {
-					this._delay(function () {
-						first.trigger("focus");
-					});
+				if ( ( event.target === last[ 0 ] || event.target === this.uiDialog[ 0 ] ) &&
+					!event.shiftKey ) {
+					this._delay( function() {
+						first.trigger( "focus" );
+					} );
 					event.preventDefault();
-				} else if ((event.target === first[0] ||
-					event.target === this.uiDialog[0]) && event.shiftKey) {
-					this._delay(function () {
-						last.trigger("focus");
-					});
+				} else if ( ( event.target === first[ 0 ] ||
+					event.target === this.uiDialog[ 0 ] ) && event.shiftKey ) {
+					this._delay( function() {
+						last.trigger( "focus" );
+					} );
 					event.preventDefault();
 				}
 			},

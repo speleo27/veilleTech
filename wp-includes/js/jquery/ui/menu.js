@@ -94,16 +94,16 @@ return $.widget( "ui.menu", {
 					// Open submenu on click
 					if ( target.has( ".ui-menu" ).length ) {
 						this.expand( event );
-					} else if (!this.element.is(":focus") &&
-						active.closest(".ui-menu").length) {
+					} else if ( !this.element.is( ":focus" ) &&
+						active.closest( ".ui-menu" ).length ) {
 
 						// Redirect focus to the menu
-						this.element.trigger("focus", [true]);
+						this.element.trigger( "focus", [ true ] );
 
 						// If the active item is on the top level, let it stay active.
 						// Otherwise, blur the active item since it is no longer visible.
-						if (this.active && this.active.parents(".ui-menu").length === 1) {
-							clearTimeout(this.timer);
+						if ( this.active && this.active.parents( ".ui-menu" ).length === 1 ) {
+							clearTimeout( this.timer );
 						}
 					}
 				}
@@ -161,8 +161,8 @@ return $.widget( "ui.menu", {
 		}
 
 		// If the mouse didn't actually move, but the page was scrolled, ignore the event (#9356)
-		if (event.clientX === this.lastMousePosition.x &&
-			event.clientY === this.lastMousePosition.y) {
+		if ( event.clientX === this.lastMousePosition.x &&
+			event.clientY === this.lastMousePosition.y ) {
 			return;
 		}
 
@@ -200,10 +200,10 @@ return $.widget( "ui.menu", {
 
 		// Destroy (sub)menus
 		this.element
-			.removeAttr("aria-activedescendant")
-			.find(".ui-menu").addBack()
-			.removeAttr("role aria-labelledby aria-expanded aria-hidden aria-disabled " +
-				"tabIndex")
+			.removeAttr( "aria-activedescendant" )
+			.find( ".ui-menu" ).addBack()
+			.removeAttr( "role aria-labelledby aria-expanded aria-hidden aria-disabled " +
+				"tabIndex" )
 			.removeUniqueId()
 			.show();
 
@@ -219,39 +219,39 @@ return $.widget( "ui.menu", {
 		var match, prev, character, skip,
 			preventDefault = true;
 
-		switch (event.keyCode) {
+		switch ( event.keyCode ) {
 			case $.ui.keyCode.PAGE_UP:
-				this.previousPage(event);
+				this.previousPage( event );
 				break;
 			case $.ui.keyCode.PAGE_DOWN:
-				this.nextPage(event);
+				this.nextPage( event );
 				break;
 			case $.ui.keyCode.HOME:
-				this._move("first", "first", event);
+				this._move( "first", "first", event );
 				break;
 			case $.ui.keyCode.END:
-				this._move("last", "last", event);
+				this._move( "last", "last", event );
 				break;
 			case $.ui.keyCode.UP:
-				this.previous(event);
+				this.previous( event );
 				break;
 			case $.ui.keyCode.DOWN:
-				this.next(event);
+				this.next( event );
 				break;
 			case $.ui.keyCode.LEFT:
-				this.collapse(event);
+				this.collapse( event );
 				break;
 			case $.ui.keyCode.RIGHT:
-				if (this.active && !this.active.is(".ui-state-disabled")) {
-					this.expand(event);
+				if ( this.active && !this.active.is( ".ui-state-disabled" ) ) {
+					this.expand( event );
 				}
 				break;
 			case $.ui.keyCode.ENTER:
 			case $.ui.keyCode.SPACE:
-				this._activate(event);
+				this._activate( event );
 				break;
 			case $.ui.keyCode.ESCAPE:
-				this.collapse(event);
+				this.collapse( event );
 				break;
 			default:
 				preventDefault = false;
@@ -260,34 +260,34 @@ return $.widget( "ui.menu", {
 
 				// Support number pad values
 				character = event.keyCode >= 96 && event.keyCode <= 105 ?
-					(event.keyCode - 96).toString() : String.fromCharCode(event.keyCode);
+					( event.keyCode - 96 ).toString() : String.fromCharCode( event.keyCode );
 
-				clearTimeout(this.filterTimer);
+				clearTimeout( this.filterTimer );
 
-				if (character === prev) {
+				if ( character === prev ) {
 					skip = true;
 				} else {
 					character = prev + character;
 				}
 
-				match = this._filterMenuItems(character);
-				match = skip && match.index(this.active.next()) !== -1 ?
-					this.active.nextAll(".ui-menu-item") :
+				match = this._filterMenuItems( character );
+				match = skip && match.index( this.active.next() ) !== -1 ?
+					this.active.nextAll( ".ui-menu-item" ) :
 					match;
 
 				// If no matches on the current filter, reset to the last character pressed
 				// to move down the menu to the first item that starts with that character
-				if (!match.length) {
-					character = String.fromCharCode(event.keyCode);
-					match = this._filterMenuItems(character);
+				if ( !match.length ) {
+					character = String.fromCharCode( event.keyCode );
+					match = this._filterMenuItems( character );
 				}
 
-				if (match.length) {
-					this.focus(event, match);
+				if ( match.length ) {
+					this.focus( event, match );
 					this.previousFilter = character;
-					this.filterTimer = this._delay(function () {
+					this.filterTimer = this._delay( function() {
 						delete this.previousFilter;
-					}, 1000);
+					}, 1000 );
 				} else {
 					delete this.previousFilter;
 				}
@@ -350,16 +350,16 @@ return $.widget( "ui.menu", {
 		} );
 
 		// Don't refresh list items that are already adapted
-		newItems = items.not(".ui-menu-item, .ui-menu-divider");
+		newItems = items.not( ".ui-menu-item, .ui-menu-divider" );
 		newWrappers = newItems.children()
-			.not(".ui-menu")
+			.not( ".ui-menu" )
 			.uniqueId()
-			.attr({
+			.attr( {
 				tabIndex: -1,
 				role: this._itemRole()
-			});
-		this._addClass(newItems, "ui-menu-item")
-			._addClass(newWrappers, "ui-menu-item-wrapper");
+			} );
+		this._addClass( newItems, "ui-menu-item" )
+			._addClass( newWrappers, "ui-menu-item-wrapper" );
 
 		// Add aria-disabled attribute to any disabled menu item
 		items.filter( ".ui-state-disabled" ).attr( "aria-disabled", "true" );
@@ -413,9 +413,9 @@ return $.widget( "ui.menu", {
 		// Highlight active parent menu item, if any
 		activeParent = this.active
 			.parent()
-			.closest(".ui-menu-item")
-			.children(".ui-menu-item-wrapper");
-		this._addClass(activeParent, null, "ui-state-active");
+			.closest( ".ui-menu-item" )
+			.children( ".ui-menu-item-wrapper" );
+		this._addClass( activeParent, null, "ui-state-active" );
 
 		if ( event && event.type === "keydown" ) {
 			this._close();
@@ -693,15 +693,15 @@ return $.widget( "ui.menu", {
 			regex = new RegExp( "^" + escapedCharacter, "i" );
 
 		return this.activeMenu
-			.find(this.options.items)
+			.find( this.options.items )
 
 			// Only match on items, not dividers or other content (#10571)
-			.filter(".ui-menu-item")
-			.filter(function () {
+			.filter( ".ui-menu-item" )
+			.filter( function() {
 				return regex.test(
 					String.prototype.trim.call(
-						$(this).children(".ui-menu-item-wrapper").text()));
-			});
+						$( this ).children( ".ui-menu-item-wrapper" ).text() ) );
+			} );
 	}
 } );
 

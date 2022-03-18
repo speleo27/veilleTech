@@ -310,8 +310,8 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 	$global_styles = array();
 	$presets       = array(
 		array(
-			'css'            => 'variables',
-			'__unstableType' => 'presets',
+			'css'                     => 'variables',
+			'__unstableType'          => 'presets',
 		),
 		array(
 			'css'            => 'presets',
@@ -346,9 +346,9 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 		$colors_by_origin          = $editor_settings['__experimentalFeatures']['color']['palette'];
 		$editor_settings['colors'] = isset( $colors_by_origin['custom'] ) ?
 			$colors_by_origin['custom'] : (
-			isset( $colors_by_origin['theme'] ) ?
-				$colors_by_origin['theme'] :
-				$colors_by_origin['default']
+				isset( $colors_by_origin['theme'] ) ?
+					$colors_by_origin['theme'] :
+					$colors_by_origin['default']
 			);
 	}
 	if ( isset( $editor_settings['__experimentalFeatures']['color']['gradients'] ) ) {
@@ -426,16 +426,16 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
  * Preloads common data used with the block editor by specifying an array of
  * REST API paths that will be preloaded for a given block editor context.
  *
- * @param string[] $preload_paths List of paths to preload.
+ * @since 5.8.0
+ *
+ * @global WP_Post    $post       Global post object.
+ * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
+ * @global WP_Styles  $wp_styles  The WP_Styles object for printing styles.
+ *
+ * @param string[]                $preload_paths        List of paths to preload.
  * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
  *
  * @return void
- * @global WP_Styles $wp_styles The WP_Styles object for printing styles.
- *
- * @since 5.8.0
- *
- * @global WP_Post $post Global post object.
- * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  */
 function block_editor_rest_api_preload( array $preload_paths, $block_editor_context ) {
 	global $post, $wp_scripts, $wp_styles;
@@ -443,11 +443,10 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 	/**
 	 * Filters the array of REST API paths that will be used to preloaded common data for the block editor.
 	 *
-	 * @param string[] $preload_paths Array of paths to preload.
-	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
-	 *
 	 * @since 5.8.0
 	 *
+	 * @param string[]                $preload_paths        Array of paths to preload.
+	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
 	 */
 	$preload_paths = apply_filters( 'block_editor_rest_api_preload_paths', $preload_paths, $block_editor_context );
 

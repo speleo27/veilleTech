@@ -331,9 +331,12 @@ function diwp_generate_theme_option_css(){
 			#menu{
                 color: <?= $fourthColor?>;
 			}
+			#menu>ul>li{
+				background-color: <?= $themeColor?>;
+			}
 			#menu>ul>li>a{
 				background-color: <?= $secondColor ?>;
-                color:
+                color:<?= $fourthColor?>;
 			}
 			#menu>ul>li>a:hover{
 				background-color: <?= $fourthColor?> ;

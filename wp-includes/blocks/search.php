@@ -39,7 +39,7 @@ function render_block_core_search( $attributes ) {
 	$inline_styles    = styles_for_block_core_search( $attributes );
 	$color_classes    = get_color_classes_for_block_core_search( $attributes );
 	$is_button_inside = ! empty( $attributes['buttonPosition'] ) &&
-	                    'button-inside' === $attributes['buttonPosition'];
+		'button-inside' === $attributes['buttonPosition'];
 	// Border color classes need to be applied to the elements that have a border color.
 	$border_color_classes = get_border_color_classes_for_block_core_search( $attributes );
 

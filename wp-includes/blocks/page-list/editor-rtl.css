@@ -109,17 +109,17 @@
   justify-content: flex-end;
 }
 .wp-block-page-list-modal-buttons .components-button {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 .wp-block-page-list .open-on-click:focus-within > .wp-block-navigation__submenu-container {
-    visibility: visible;
-    opacity: 1;
-    width: auto;
-    height: auto;
-    min-width: 200px;
+  visibility: visible;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  min-width: 200px;
 }
 
 .wp-block-page-list .components-notice {
-    margin-right: 0;
+  margin-right: 0;
 }

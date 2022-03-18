@@ -86,7 +86,6 @@ class WP_Theme_JSON_Resolver {
 				$config = $decoded_file;
 			}
 		}
-
 		return $config;
 	}
 
@@ -109,8 +108,8 @@ class WP_Theme_JSON_Resolver {
 	 *
 	 * @since 5.8.0
 	 *
-	 * @param array $theme_json The theme.json to translate.
-	 * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
+	 * @param array  $theme_json The theme.json to translate.
+	 * @param string $domain     Optional. Text domain. Unique identifier for retrieving translated strings.
 	 *                           Default 'default'.
 	 * @return array Returns the modified $theme_json_structure.
 	 */

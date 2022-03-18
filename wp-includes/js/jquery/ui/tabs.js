@@ -175,7 +175,7 @@ $.widget( "ui.tabs", {
 			return;
 		}
 
-		switch (event.keyCode) {
+		switch ( event.keyCode ) {
 			case $.ui.keyCode.RIGHT:
 			case $.ui.keyCode.DOWN:
 				selectedIndex++;
@@ -195,17 +195,17 @@ $.widget( "ui.tabs", {
 
 				// Activate only, no collapsing
 				event.preventDefault();
-				clearTimeout(this.activating);
-				this._activate(selectedIndex);
+				clearTimeout( this.activating );
+				this._activate( selectedIndex );
 				return;
 			case $.ui.keyCode.ENTER:
 
 				// Toggle (cancel delayed activation, allow collapsing)
 				event.preventDefault();
-				clearTimeout(this.activating);
+				clearTimeout( this.activating );
 
 				// Determine if we should collapse or activate
-				this._activate(selectedIndex === this.options.active ? false : selectedIndex);
+				this._activate( selectedIndex === this.options.active ? false : selectedIndex );
 				return;
 			default:
 				return;
@@ -603,19 +603,19 @@ $.widget( "ui.tabs", {
 
 		event.preventDefault();
 
-		if (tab.hasClass("ui-state-disabled") ||
+		if ( tab.hasClass( "ui-state-disabled" ) ||
 
 			// tab is already loading
-			tab.hasClass("ui-tabs-loading") ||
+			tab.hasClass( "ui-tabs-loading" ) ||
 
 			// can't switch durning an animation
 			this.running ||
 
 			// click on active header, but not collapsible
-			(clickedIsActive && !options.collapsible) ||
+			( clickedIsActive && !options.collapsible ) ||
 
 			// allow canceling activation
-			(this._trigger("beforeActivate", event, eventData) === false)) {
+			( this._trigger( "beforeActivate", event, eventData ) === false ) ) {
 			return;
 		}
 
