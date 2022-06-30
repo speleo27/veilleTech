@@ -250,3 +250,177 @@ function customize_home_introduction($wp_customize){
 	));
 }
 add_action('customize_register','customize_home_introduction');
+
+function diwp_customizer_add_colorPicker( $wp_customize ) {
+
+	// Add New Section: DIWP Colors
+
+	$wp_customize->add_section( 'diwp_color_section', array(
+		'title'       => 'Configurateur de couleur',
+		'description' => 'Pour configurer votre thème',
+		'priority'    => '0'
+	) );
+
+	// Add Settings
+	$wp_customize->add_setting( 'firstColor', array(
+		'default' => '#3204d9',
+	) );
+
+
+	$wp_customize->add_setting( 'secondColor', array(
+		'default' => '#21d904',
+	) );
+
+	$wp_customize->add_setting( 'thirdColor', array(
+		'default' => '#f2f2f2',
+	) );
+
+	$wp_customize->add_setting( 'fourthColor', array(
+		'default' => '#FFFFFF',
+	) );
+
+
+	// Add Controls
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'firstColor', array(
+		'label'    => 'Couleur Principale',
+		'section'  => 'diwp_color_section',
+		'settings' => 'firstColor'
+
+	) ) );
+
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'secondColor', array(
+		'label'    => 'Seconde couleur',
+		'section'  => 'diwp_color_section',
+		'settings' => 'secondColor'
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'thirdColor', array(
+		'label'    => 'Troisième couleur',
+		'section'  => 'diwp_color_section',
+		'settings' => 'thirdColor'
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'fourthColor', array(
+		'label'    => 'Quatrième couleur',
+		'section'  => 'diwp_color_section',
+		'settings' => 'fourthColor'
+	) ) );
+
+}
+
+add_action( 'customize_register', 'diwp_customizer_add_colorPicker' );
+
+function diwp_generate_theme_option_css(){
+
+	$themeColor = get_theme_mod('firstColor');
+	$secondColor = get_theme_mod('secondColor');
+	$thirdColor = get_theme_mod('thirdColor');
+	$fourthColor = get_theme_mod('fourthColor');
+
+	if(!empty($themeColor)):
+
+		?>
+		<style type="text/css" id="diwp-theme-option-css">
+			.header-container{
+				background-color: <?= $themeColor?>;
+			}
+			h1{
+				color: <?= $fourthColor?>;
+			}
+			#menu{
+                color: <?= $fourthColor?>;
+			}
+			#menu>ul>li{
+				background-color: <?= $themeColor?>;
+			}
+			#menu>ul>li>a{
+				background-color: <?= $secondColor ?>;
+                color:<?= $fourthColor?>;
+			}
+			#menu>ul>li>a:hover{
+				background-color: <?= $fourthColor?> ;
+				color:<?= $secondColor ?>
+			}
+			.home{
+				background-color: <?= $fourthColor?> ;
+			}
+			div.home-container{
+				background-color: <?= $thirdColor ?>;
+			}
+			.home-container>h2{
+				color: <?= $themeColor?>;
+			}
+			.card{
+				border: solid 1px <?= $themeColor ?>
+			}
+
+			.card-header{
+				background-color: <?= $themeColor ?>;
+				color:<?= $fourthColor ?>;
+			}
+			 .card-body{
+                 border-top: solid 1px <?=$themeColor?> ;
+			 }
+			 .card-title{
+				 color:<?= $secondColor ?>;
+			 }
+			 .btn{
+				 background-color: <?= $fourthColor ?> ;
+				 color: <?=$themeColor?>;
+                 border: solid 1px <?= $themeColor ?>
+			 }
+			 .btn:hover{
+				 color:<?= $fourthColor ?> ;
+                 background-color:<?=$themeColor?>;
+			 }
+
+			 .com{
+                 border-top: solid 1px <?=$themeColor?> ;
+                 background-color:<?= $thirdColor ?>;
+			 }
+			 .search>.card>div>div>h2{
+                 background-color:<?=$themeColor?>;
+                 color:<?= $fourthColor ?> ;
+			 }
+			 @media screen and (min-width: 1024px){
+				 .card>.card-body>.btn{
+                     background-color:<?=$themeColor?>;
+                     color:<?= $fourthColor ?> ;
+				 }
+                 .card>.card-body>.btn:hover{
+                     background-color:<?= $fourthColor ?> ;
+                     color:<?=$themeColor?>;
+                 }
+			 }
+			.contact>.btn{
+                color:<?=$themeColor?>;
+                border-top: solid 1px <?=$themeColor?> ;
+			}
+			footer{
+				color: <?=$themeColor?> ;
+                border-top: solid 1px <?=$themeColor?> ;
+            }
+			#footer>ul>li{
+
+                color: <?=$themeColor?> ;
+			}
+			#footer>ul>li>a{
+				color:<?= $themeColor ?>;
+			}
+			#footer>ul>li>a:hover{
+				color:<?= $secondColor ?>;
+			}
+			.logo-part{
+                border-right: 1px solid <?= $themeColor ?>;
+            }
+
+
+		</style>
+
+	<?php
+
+	endif;
+}
+
+add_action( 'wp_head', 'diwp_generate_theme_option_css' );
